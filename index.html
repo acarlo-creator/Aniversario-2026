@@ -2,15 +2,15 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Aniversário Leroy Merlin 2026 — Tabela Alinhada</title>
+<title>Aniversário Leroy Merlin 2026 — Placar & Pontos Extras</title>
 <style>
   :root {
-    --bg: #f8fafc;
-    --card: #ffffff;
+    --bg-light: #f8fafc;
+    --card-white: #ffffff;
     --text-dark: #0f172a;
     --text-muted: #64748b;
-    --verde-header: #10b981;
-    --dourado: #f59e0b;
+    --verde-lm: #10b981;
+    --dourado-glow: #f59e0b;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -19,174 +19,283 @@
     background: #f1f5f9;
     background-image: 
       radial-gradient(circle at 10% 10%, rgba(255, 165, 2, 0.12) 0%, transparent 40%),
-      radial-gradient(circle at 90% 20%, rgba(30, 144, 255, 0.12) 0%, transparent 40%);
+      radial-gradient(circle at 90% 20%, rgba(30, 144, 255, 0.12) 0%, transparent 40%),
+      radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.12) 0%, transparent 50%);
     color: var(--text-dark);
     font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
     min-height: 100vh;
     padding: 25px;
+    overflow-x: auto;
+  }
+
+  .confete {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: #f59e0b;
+    top: -10px;
+    z-index: 1;
+    opacity: 0.6;
+    animation: fall 5s linear infinite;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
   }
 
   header {
     text-align: center;
     max-width: 900px;
     margin: 0 auto 30px;
+    position: relative;
+    z-index: 2;
   }
 
   .selo {
     display: inline-block;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 800;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     text-transform: uppercase;
     color: #ffffff;
     background: linear-gradient(135deg, #ff4757, #ffa502);
-    padding: 6px 20px;
-    border-radius: 20px;
-    margin-bottom: 10px;
+    padding: 8px 24px;
+    border-radius: 30px;
+    box-shadow: 0 10px 20px rgba(255, 71, 87, 0.3);
+    animation: pulse 2s infinite;
+    margin-bottom: 15px;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
   }
 
   h1 {
-    font-size: 36px;
+    font-size: clamp(30px, 5vw, 48px);
     font-weight: 900;
+    letter-spacing: -1px;
     color: #0f172a;
     text-transform: uppercase;
+    line-height: 1;
   }
 
   h1 span {
-    color: #10b981;
-    font-size: 0.7em;
     display: block;
-    margin-top: 4px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 0.65em;
+    letter-spacing: 4px;
+    margin-top: 6px;
   }
 
-  /* CONTAINER DA TABELA UNIFICADA E ALINHADA */
-  .tabela-container {
+  .sub {
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  main {
     max-width: 1400px;
     margin: 0 auto;
-    background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-    overflow-x: auto;
-    border: 1px solid #e2e8f0;
+    position: relative;
+    z-index: 2;
   }
 
-  table.placar-tabela {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 1100px;
+  /* PÓDIO IMPACTANTE */
+  .podio {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr 1fr;
+    gap: 20px;
+    align-items: end;
+    margin: 0 auto 40px;
+    max-width: 800px;
   }
 
-  /* CABEÇALHOS */
-  .placar-tabela th {
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    padding: 10px 6px;
+  .pod {
+    background: var(--card-white);
+    border-radius: 20px;
+    padding: 20px 15px 16px;
     text-align: center;
-    border-bottom: 2px solid #cbd5e1;
-    border-right: 1px solid #e2e8f0;
-  }
-
-  .header-setor { background: #eff6ff; color: #1d4ed8; text-align: left !important; padding-left: 16px !important; }
-  .header-total { background: #fef3c7; color: #b45309; width: 110px; }
-  .header-semana { background: #ecfdf5; color: #047857; }
-
-  .sub-header-cell {
-    background: #f8fafc;
-    color: #475569;
-    font-size: 9px;
-    font-weight: 800;
-    padding: 6px 4px;
-    border-bottom: 2px solid #cbd5e1;
-    border-right: 1px solid #e2e8f0;
-  }
-
-  /* LINHAS E CÉLULAS */
-  .placar-tabela td {
-    padding: 8px;
-    vertical-align: middle;
-    border-bottom: 1px solid #f1f5f9;
-    border-right: 1px solid #f1f5f9;
-    height: 68px;
-  }
-
-  .placar-tabela tr:hover {
-    background-color: #f8fafc;
-  }
-
-  /* COLUNA DO SETOR E FILME */
-  .cell-setor {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 12px;
-    padding-left: 8px;
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+    position: relative;
   }
 
-  .pos-tag {
-    font-size: 12px;
-    font-weight: 900;
-    color: #2563eb;
-    background: #eff6ff;
-    width: 28px;
-    height: 28px;
+  .p1 { border: 3px solid #f59e0b; background: linear-gradient(180deg, #fffbeb 0%, #ffffff 100%); }
+  .p2 { border: 3px solid #3b82f6; }
+  .p3 { border: 3px solid #f97316; }
+
+  .poster-podio {
+    width: 80px;
+    height: 105px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  }
+
+  .pod .badge-pos {
+    position: absolute;
+    top: -15px;
+    background: #0f172a;
+    color: #fff;
+    font-size: 18px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
   }
 
-  .poster-img {
-    width: 38px;
-    height: 50px;
-    border-radius: 6px;
-    object-fit: cover;
-    flex-shrink: 0;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  .p1 .badge-pos { background: #f59e0b; font-size: 22px; width: 44px; height: 44px; top: -20px; }
+
+  .pod .nome { font-size: 13px; font-weight: 800; color: var(--text-dark); min-height: 32px; display: flex; align-items: center; }
+  .pod .filme { font-size: 11px; font-weight: 800; color: #ef4444; text-transform: uppercase; margin-top: 4px; background: #fef2f2; padding: 2px 8px; border-radius: 10px; }
+  .pod .valor { font-size: 28px; font-weight: 900; margin-top: 8px; color: #0f172a; }
+  .p1 .valor { color: #d97706; }
+
+  /* PAINEL DUAL - PLACAR + QUADRO PONTOS EXTRAS */
+  .painel-container {
+    display: grid;
+    grid-template-columns: minmax(480px, 1fr) 2fr;
+    gap: 20px;
+    align-items: start;
   }
 
-  .setor-nome {
-    font-size: 13.5px;
-    font-weight: 800;
-    color: #0f172a;
-    line-height: 1.2;
-  }
-
-  .filme-nome {
-    font-size: 11.5px;
-    font-weight: 700;
-    color: #db2777;
-    margin-top: 2px;
-  }
-
-  /* TOTAL ACUMULADO */
-  .cell-total {
-    font-size: 16px;
-    font-weight: 900;
-    color: #0f172a;
-    text-align: center;
-    background: #fffbeb;
-  }
-
-  /* PONTOS EXTRAS */
-  .cell-extra {
-    text-align: center;
+  .secao-titulo {
     font-size: 13px;
-    font-weight: 700;
-    color: #94a3b8;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #3b82f6;
+    background: #eff6ff;
+    padding: 8px 16px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    display: inline-block;
   }
 
-  .cell-extra.preenchido {
-    color: #059669;
+  /* LISTA DE SETORES */
+  .lista { display: flex; flex-direction: column; gap: 10px; }
+
+  .linha {
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    align-items: center;
+    gap: 12px;
+    background: var(--card-white);
+    border-radius: 14px;
+    padding: 10px 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    border-left: 5px solid #3b82f6;
+    height: 72px;
+  }
+
+  .linha .pos {
     font-weight: 900;
+    font-size: 14px;
+    color: #3b82f6;
+    background: #eff6ff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .linha .info .filme-wrap { display: flex; align-items: center; gap: 10px; }
+  .linha .info .filme-poster { width: 38px; height: 50px; border-radius: 6px; flex-shrink: 0; }
+  .linha .info .nome { font-weight: 800; font-size: 13.5px; color: var(--text-dark); }
+  .linha .info .filme-nome { font-size: 12px; color: #db2777; font-weight: 700; margin-top: 2px; }
+  .linha .valor { font-weight: 900; font-size: 16px; color: #0f172a; text-align: right; }
+
+  /* QUADRO DE PONTOS EXTRAS POR SEMANA */
+  .quadro-semanas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .semana-col {
+    background: var(--card-white);
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  }
+
+  .semana-header {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #10b981;
+    background: #ecfdf5;
+    padding: 6px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  .sub-headers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+
+  .sub-box {
+    background: #f1f5f9;
+    font-size: 9px;
+    font-weight: 800;
+    color: #475569;
+    text-align: center;
+    padding: 6px 2px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+
+  .semana-linhas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .celula-grupo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    height: 72px;
+    align-items: center;
+  }
+
+  .celula-val {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 8px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 13px;
+    color: #0f172a;
   }
 
   footer {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 40px;
     font-size: 12px;
     font-weight: 700;
     color: var(--text-muted);
+    letter-spacing: 2px;
     text-transform: uppercase;
   }
 </style>
@@ -194,114 +303,177 @@
 </head>
 <body>
 
+<div class="confete" style="left: 10%; animation-delay: 0s;"></div>
+<div class="confete" style="left: 25%; animation-delay: 2s; background-color: #ff4757;"></div>
+<div class="confete" style="left: 50%; animation-delay: 1s; background-color: #1e90ff;"></div>
+<div class="confete" style="left: 75%; animation-delay: 3s; background-color: #10b981;"></div>
+<div class="confete" style="left: 90%; animation-delay: 1.5s;"></div>
+
 <header>
-  <span class="selo">🎬 Placar Integrado & Acompanhamento Lateral</span>
+  <span class="selo">🎬 Edição Especial · Acompanhamento Semanal</span>
   <h1>Aniversário <span>Leroy Merlin 2026</span></h1>
-  <p class="sub">Resultados acumulados dos 3 dias e matriz para atualização semanal dos pontos extras</p>
+  <p class="sub">Placar geral de bilheteria e acompanhamento lateral de pontos extras por semana</p>
 </header>
 
 <main>
-  <div class="tabela-container">
-    <table class="placar-tabela">
-      <thead>
-        <tr>
-          <th rowspan="2" class="header-setor">Setores & Filmes</th>
-          <th rowspan="2" class="header-total">Acumulado do Período</th>
-          <th colspan="3" class="header-semana">1ª Semana</th>
-          <th colspan="3" class="header-semana">2ª Semana</th>
-          <th colspan="3" class="header-semana">3ª Semana</th>
-        </tr>
-        <tr>
-          <th class="sub-header-cell">Ponto Extra MDH</th>
-          <th class="sub-header-cell">Ponto Extra Cartões</th>
-          <th class="sub-header-cell">Ponto Extra Serviços</th>
-          <th class="sub-header-cell">Ponto Extra MDH</th>
-          <th class="sub-header-cell">Ponto Extra Cartões</th>
-          <th class="sub-header-cell">Ponto Extra Serviços</th>
-          <th class="sub-header-cell">Ponto Extra MDH</th>
-          <th class="sub-header-cell">Ponto Extra Cartões</th>
-          <th class="sub-header-cell">Ponto Extra Serviços</th>
-        </tr>
-      </thead>
-      <tbody id="tabela-corpo"></tbody>
-    </table>
+  <!-- PÓDIO TOP 3 -->
+  <div class="podio">
+    <!-- 2º LUGAR -->
+    <div class="pod p2">
+      <div class="badge-pos">🥈</div>
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdfNTMzNTI5NTM5MjE3MzQxMDcyNCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWU5MGZmIi8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMGQyZDMiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICA8L2RlZnM+CiAgICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfNTMzNTI5NTM5MjE3MzQxMDcyNCkiIHJ4PSIxMCIvPgogICAgICA8cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTE0IiBoZWlnaHQ9IjE1NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMywyIiBvcGFjaXR5PSIwLjUiIHJ4PSI4Ii8+CiAgICAgIDxjaXJjbGUgY3g9IjYwIiBjeT0iNTUiIHI9IjMwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICAgICAgPHRleHQgeD0iNjAiIHk9IjY2IiBmb250LXNpemU9IjMyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7imqE8L3RleHQ+CiAgICAgIDxyZWN0IHg9IjgiIHk9IjEwMiIgd2lkdGg9IjEwNCIgaGVpZ2h0PSI0OCIgcng9IjYiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC45NSkiIC8+CiAgICAgIDx0ZXh0IHg9IjYwIiB5PSIxMjIiIGZvbnQtc2l6ZT0iOC41IiBmb250LWZhbWlseT0iJ0ltcGFjdCcsICdBcmlhbCBCbGFjaycsIHNhbnMtc2VyaWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMwZjE3MmEiPlNVUEVSIENIT1FVRTwvdGV4dD4KICAgICAgPHRleHQgeD0iNjAiIHk9IjEzOCIgZm9udC1zaXplPSI3IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMxZTkwZmYiIGxldHRlci1zcGFjaW5nPSIxIj5PRklDSUFMPC90ZXh0PgogICAgPC9zdmc+" class="poster-podio" alt="Super Choque">
+      <div class="nome">Eletricidade</div>
+      <div class="filme">Super choque</div>
+      <div class="valor">70 <small>pts</small></div>
+    </div>
+
+    <!-- 1º LUGAR -->
+    <div class="pod p1">
+      <div class="badge-pos">🏆</div>
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdfNTkxMzQwMTIwODg0NjE5NjgzMiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmY0NzU3Ii8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmE1MDIiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICA8L2RlZnM+CiAgICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfNTkxMzQwMTIwODg0NjE5NjgzMikiIHJ4PSIxMCIvPgogICAgICA8cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTE0IiBoZWlnaHQ9IjE1NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMywyIiBvcGFjaXR5PSIwLjUiIHJ4PSI4Ii8+CiAgICAgIDxjaXJjbGUgY3g9IjYwIiBjeT0iNTUiIHI9IjMwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICAgICAgPHRleHQgeD0iNjAiIHk9IjY2IiBmb250LXNpemU9IjMyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn6exPC90ZXh0PgogICAgICA8cmVjdCB4PSI4IiB5PSIxMDIiIHdpZHRoPSIxMDQiIGhlaWdodD0iNDgiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIiAvPgogICAgICA8dGV4dCB4PSI2MCIgeT0iMTIyIiBmb250LXNpemU9IjguNSIgZm9udC1mYW1pbHk9IidJbXBhY3QnLCAnQXJpYWwgQmxhY2snLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5MRUdPIE8gRklMTUU8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjYwIiB5PSIxMzgiIGZvbnQtc2l6ZT0iNyIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmY0NzU3IiBsZXR0ZXItc3BhY2luZz0iMSI+T0ZJQ0lBTDwvdGV4dD4KICAgIDwvc3ZnPg==" class="poster-podio" alt="Lego">
+      <div class="nome">Pisos Laminados e Vinílicos</div>
+      <div class="filme">Lego o Filme</div>
+      <div class="valor">78 <small>pts</small></div>
+    </div>
+
+    <!-- 3º LUGAR -->
+    <div class="pod p3">
+      <div class="badge-pos">🥉</div>
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdfNTkxMzQwMTIwODg0NjE5NjgzMiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmY0NzU3Ii8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmE1MDIiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICA8L2RlZnM+CiAgICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfNTkxMzQwMTIwODg0NjE5NjgzMikiIHJ4PSIxMCIvPgogICAgICA8cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTE0IiBoZWlnaHQ9IjE1NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMywyIiBvcGFjaXR5PSIwLjUiIHJ4PSI4Ii8+CiAgICAgIDxjaXJjbGUgY3g9IjYwIiBjeT0iNTUiIHI9IjMwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICAgICAgPHRleHQgeD0iNjAiIHk9IjY2IiBmb250LXNpemU9IjMyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn6exPC90ZXh0PgogICAgICA8cmVjdCB4PSI4IiB5PSIxMDIiIHdpZHRoPSIxMDQiIGhlaWdodD0iNDgiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIiAvPgogICAgICA8dGV4dCB4PSI2MCIgeT0iMTIyIiBmb250LXNpemU9IjguNSIgZm9udC1mYW1pbHk9IidJbXBhY3QnLCAnQXJpYWwgQmxhY2snLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5MRUdPIE8gRklMTUU8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjYwIiB5PSIxMzgiIGZvbnQtc2l6ZT0iNyIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmY0NzU3IiBsZXR0ZXItc3BhY2luZz0iMSI+T0ZJQ0lBTDwvdGV4dD4KICAgIDwvc3ZnPg==" class="poster-podio" alt="Lego Cerâmica">
+      <div class="nome">Cerâmica</div>
+      <div class="filme">Lego o Filme</div>
+      <div class="valor">58 <small>pts</small></div>
+    </div>
+  </div>
+
+  <!-- CONTAINER DUAL: LISTA DE SETORES + QUADROS SEMANAIS LATERAIS -->
+  <div class="painel-container">
+    <!-- COLUNA ESQUERDA: LISTA COMPLETA DOS SETORES -->
+    <div>
+      <div class="secao-titulo">📊 Classificação Geral dos Setores</div>
+      <div class="lista" id="lista"></div>
+    </div>
+
+    <!-- COLUNA DIREITA: QUADROS LATERAIS DE PONTOS EXTRAS (1ª, 2ª E 3ª SEMANA) -->
+    <div>
+      <div class="secao-titulo">🎯 Acompanhamento de Pontos Extras</div>
+      <div class="quadro-semanas">
+        <!-- 1ª SEMANA -->
+        <div class="semana-col">
+          <div class="semana-header">1ª Semana</div>
+          <div class="sub-headers">
+            <div class="sub-box">Ponto Extra MDH</div>
+            <div class="sub-box">Ponto Extra Cartões</div>
+            <div class="sub-box">Ponto Extra Serviços</div>
+          </div>
+          <div class="semana-linhas" id="s1-linhas"></div>
+        </div>
+
+        <!-- 2ª SEMANA -->
+        <div class="semana-col">
+          <div class="semana-header">2ª Semana</div>
+          <div class="sub-headers">
+            <div class="sub-box">Ponto Extra MDH</div>
+            <div class="sub-box">Ponto Extra Cartões</div>
+            <div class="sub-box">Ponto Extra Serviços</div>
+          </div>
+          <div class="semana-linhas" id="s2-linhas"></div>
+        </div>
+
+        <!-- 3ª SEMANA -->
+        <div class="semana-col">
+          <div class="semana-header">3ª Semana</div>
+          <div class="sub-headers">
+            <div class="sub-box">Ponto Extra MDH</div>
+            <div class="sub-box">Ponto Extra Cartões</div>
+            <div class="sub-box">Ponto Extra Serviços</div>
+          </div>
+          <div class="semana-linhas" id="s3-linhas"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </main>
 
-<footer>🎬 Placar atualizado e alinhado por setor · Loja Morumbi 🍿</footer>
+<footer>🎬 Placar acumulado e acompanhamento de pontos extras · Loja Morumbi 🍿</footer>
 
 <script>
   const iconesFilmes = {
-    "Lego o Filme": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTMwIiB2aWV3Qm94PSIwIDAgMTAwIDEzMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ180OTYzODk1Njk3MTk4NDAzNTcyIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmZjQ3NTciLz4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmYTUwMiIvPgogICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgIDwvZGVmcz4KICAgICAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNnXzQ5NjM4OTU2OTcxOTg0MDM1NzIpIiByeD0iMTAiLz4KICAgICAgPGNpcmNsZSBjeD0iNTAiIGN5PSI0NSIgcj0iMjYiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4yKSIvPgogICAgICA8dGV4dCB4PSI1MCIgeT0iNTUiIGZvbnQtc2l6ZT0iMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfp7E8L3RleHQ+CiAgICAgIDxyZWN0IHg9IjYiIHk9IjgyIiB3aWR0aD0iODgiIGhlaWdodD0iNDAiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIi8+CiAgICAgIDx0ZXh0IHg9IjUwIiB5PSI5OCIgZm9udC1zaXplPSI4IiBmb250LWZhbWlseT0iJ0ltcGFjdCcsIEFyaWFsLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5MRUdPIE8gRklMTUU8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjUwIiB5PSIxMTIiIGZvbnQtc2l6ZT0iNi41IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmY0NzU3Ij5PRklDSUFMPC90ZXh0PgogICAgPC9zdmc+",
-    "Super choque": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTMwIiB2aWV3Qm94PSIwIDAgMTAwIDEzMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ18xNjk2NjY0NjUwMTY2NTg4MTc3IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMxZTkwZmYiLz4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwZDJkMyIvPgogICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgIDwvZGVmcz4KICAgICAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNnXzE2OTY2NjQ2NTAxNjY1ODgxNzcpIiByeD0iMTAiLz4KICAgICAgPGNpcmNsZSBjeD0iNTAiIGN5PSI0NSIgcj0iMjYiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4yKSIvPgogICAgICA8dGV4dCB4PSI1MCIgeT0iNTUiIGZvbnQtc2l6ZT0iMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuKaoTwvdGV4dD4KICAgICAgPHJlY3QgeD0iNiIgeT0iODIiIHdpZHRoPSI4OCIgaGVpZ2h0PSI0MCIgcng9IjYiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC45NSkiLz4KICAgICAgPHRleHQgeD0iNTAiIHk9Ijk4IiBmb250LXNpemU9IjgiIGZvbnQtZmFtaWx5PSInSW1wYWN0JywgQXJpYWwsIHNhbnMtc2VyaWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMwZjE3MmEiPlNVUEVSIENIT1FVRTwvdGV4dD4KICAgICAgPHRleHQgeD0iNTAiIHk9IjExMiIgZm9udC1zaXplPSI2LjUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMxZTkwZmYiPk9GSUNJQUw8L3RleHQ+CiAgICA8L3N2Zz4=",
-    "A fantástica fábrica de chocolate": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTMwIiB2aWV3Qm94PSIwIDAgMTAwIDEzMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ18zMDI0NTY4MjMwNTQyNzI2OTkwIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM4YjVjZjYiLz4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzNiMDc2NCIvPgogICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgIDwvZGVmcz4KICAgICAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNnXzMwMjQ1NjgyMzA1NDI3MjY5OTApIiByeD0iMTAiLz4KICAgICAgPGNpcmNsZSBjeD0iNTAiIGN5PSI0NSIgcj0iMjYiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4yKSIvPgogICAgICA8dGV4dCB4PSI1MCIgeT0iNTUiIGZvbnQtc2l6ZT0iMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfjas8L3RleHQ+CiAgICAgIDxyZWN0IHg9IjYiIHk9IjgyIiB3aWR0aD0iODgiIGhlaWdodD0iNDAiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIi8+CiAgICAgIDx0ZXh0IHg9IjUwIiB5PSI5OCIgZm9udC1zaXplPSI4IiBmb250LWZhbWlseT0iJ0ltcGFjdCcsIEFyaWFsLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5DSE9DT0xBVEU8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjUwIiB5PSIxMTIiIGZvbnQtc2l6ZT0iNi41IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOGI1Y2Y2Ij5PRklDSUFMPC90ZXh0PgogICAgPC9zdmc+",
-    "Rocky, O Desafio Supremo": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTMwIiB2aWV3Qm94PSIwIDAgMTAwIDEzMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ180NDIxNzczMTEwNTk2MDYzMTQ2IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNkYzI2MjYiLz4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzdmMWQxZCIvPgogICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgIDwvZGVmcz4KICAgICAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNnXzQ0MjE3NzMxMTA1OTYwNjMxNDYpIiByeD0iMTAiLz4KICAgICAgPGNpcmNsZSBjeD0iNTAiIGN5PSI0NSIgcj0iMjYiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4yKSIvPgogICAgICA8dGV4dCB4PSI1MCIgeT0iNTUiIGZvbnQtc2l6ZT0iMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfpYo8L3RleHQ+CiAgICAgIDxyZWN0IHg9IjYiIHk9IjgyIiB3aWR0aD0iODgiIGhlaWdodD0iNDAiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIi8+CiAgICAgIDx0ZXh0IHg9IjUwIiB5PSI5OCIgZm9udC1zaXplPSI4IiBmb250LWZhbWlseT0iJ0ltcGFjdCcsIEFyaWFsLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5ST0NLWSBCQUxCT0E8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjUwIiB5PSIxMTIiIGZvbnQtc2l6ZT0iNi41IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZGMyNjI2Ij5PRklDSUFMPC90ZXh0PgogICAgPC9zdmc+",
-    "Liga da Justiça": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTMwIiB2aWV3Qm94PSIwIDAgMTAwIDEzMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ181MzUzOTg5NDYwOTA5NjU0MjMiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzI1NjNlYiIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMWUxYjRiIi8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgPC9kZWZzPgogICAgICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dfNTM1Mzk4OTQ2MDkwOTY1NDIzKSIgcng9IjEwIi8+CiAgICAgIDxjaXJjbGUgY3g9IjUwIiBjeT0iNDUiIHI9IjI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICAgICAgPHRleHQgeD0iNTAiIHk9IjU1IiBmb250LXNpemU9IjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn6aHPC90ZXh0PgogICAgICA8cmVjdCB4PSI2IiB5PSI4MiIgd2lkdGg9Ijg4IiBoZWlnaHQ9IjQwIiByeD0iNiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjk1KSIvPgogICAgICA8dGV4dCB4PSI1MCIgeT0iOTgiIGZvbnQtc2l6ZT0iOCIgZm9udC1mYW1pbHk9IidJbXBhY3QnLCBBcmlhbCwgc2Fucy1zZXJpZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzBmMTcyYSI+TElHQSBKVVNUScOHQTwvdGV4dD4KICAgICAgPHRleHQgeD0iNTAiIHk9IjExMiIgZm9udC1zaXplPSI2LjUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMyNTYzZWIiPk9GSUNJQUw8L3RleHQ+CiAgICA8L3N2Zz4=",
-    "300": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTMwIiB2aWV3Qm94PSIwIDAgMTAwIDEzMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ181OTUzNjAxMDIyNzI1MjM1NTA3IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM5OTFiMWIiLz4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzE4MTgxYiIvPgogICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgIDwvZGVmcz4KICAgICAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNnXzU5NTM2MDEwMjI3MjUyMzU1MDcpIiByeD0iMTAiLz4KICAgICAgPGNpcmNsZSBjeD0iNTAiIGN5PSI0NSIgcj0iMjYiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4yKSIvPgogICAgICA8dGV4dCB4PSI1MCIgeT0iNTUiIGZvbnQtc2l6ZT0iMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfm6HvuI88L3RleHQ+CiAgICAgIDxyZWN0IHg9IjYiIHk9IjgyIiB3aWR0aD0iODgiIGhlaWdodD0iNDAiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIi8+CiAgICAgIDx0ZXh0IHg9IjUwIiB5PSI5OCIgZm9udC1zaXplPSI4IiBmb250LWZhbWlseT0iJ0ltcGFjdCcsIEFyaWFsLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5GSUxNRSAzMDA8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjUwIiB5PSIxMTIiIGZvbnQtc2l6ZT0iNi41IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTkxYjFiIj5PRklDSUFMPC90ZXh0PgogICAgPC9zdmc+",
-    "Procurando Nemo": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTMwIiB2aWV3Qm94PSIwIDAgMTAwIDEzMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ18zODM4MjE2MjIyNjk2MzE5OTk1IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNlYTU4MGMiLz4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA4OTFiMiIvPgogICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgIDwvZGVmcz4KICAgICAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNnXzM4MzgyMTYyMjI2OTYzMTk5OTUpIiByeD0iMTAiLz4KICAgICAgPGNpcmNsZSBjeD0iNTAiIGN5PSI0NSIgcj0iMjYiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4yKSIvPgogICAgICA8dGV4dCB4PSI1MCIgeT0iNTUiIGZvbnQtc2l6ZT0iMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkKA8L3RleHQ+CiAgICAgIDxyZWN0IHg9IjYiIHk9IjgyIiB3aWR0aD0iODgiIGhlaWdodD0iNDAiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIi8+CiAgICAgIDx0ZXh0IHg9IjUwIiB5PSI5OCIgZm9udC1zaXplPSI4IiBmb250LWZhbWlseT0iJ0ltcGFjdCcsIEFyaWFsLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5ORU1PPC90ZXh0PgogICAgICA8dGV4dCB4PSI1MCIgeT0iMTEyIiBmb250LXNpemU9IjYuNSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2VhNTgwYyI+T0ZJQ0lBTDwvdGV4dD4KICAgIDwvc3ZnPg==",
-    "Enrolados": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTMwIiB2aWV3Qm94PSIwIDAgMTAwIDEzMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ181NTMwNzIzMTQ2MDQ4OTgwMDIyIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM5MzMzZWEiLz4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzRjMWQ5NSIvPgogICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgIDwvZGVmcz4KICAgICAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNnXzU1MzA3MjMxNDYwNDg5ODAwMjIpIiByeD0iMTAiLz4KICAgICAgPGNpcmNsZSBjeD0iNTAiIGN5PSI0NSIgcj0iMjYiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4yKSIvPgogICAgICA8dGV4dCB4PSI1MCIgeT0iNTUiIGZvbnQtc2l6ZT0iMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfj7A8L3RleHQ+CiAgICAgIDxyZWN0IHg9IjYiIHk9IjgyIiB3aWR0aD0iODgiIGhlaWdodD0iNDAiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIi8+CiAgICAgIDx0ZXh0IHg9IjUwIiB5PSI5OCIgZm9udC1zaXplPSI4IiBmb250LWZhbWlseT0iJ0ltcGFjdCcsIEFyaWFsLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5FTlJPTEFET1M8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjUwIiB5PSIxMTIiIGZvbnQtc2l6ZT0iNi41IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTMzM2VhIj5PRklDSUFMPC90ZXh0PgogICAgPC9zdmc+",
-    "Pânico na Floresta": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTMwIiB2aWV3Qm94PSIwIDAgMTAwIDEzMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ18xMDk2MzI4MjczNzkzNzM0NTAzIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMxNjY1MzQiLz4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA2NGUzYiIvPgogICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgIDwvZGVmcz4KICAgICAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNnXzEwOTYzMjgyNzM3OTM3MzQ1MDMpIiByeD0iMTAiLz4KICAgICAgPGNpcmNsZSBjeD0iNTAiIGN5PSI0NSIgcj0iMjYiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4yKSIvPgogICAgICA8dGV4dCB4PSI1MCIgeT0iNTUiIGZvbnQtc2l6ZT0iMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfjLI8L3RleHQ+CiAgICAgIDxyZWN0IHg9IjYiIHk9IjgyIiB3aWR0aD0iODgiIGhlaWdodD0iNDAiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIi8+CiAgICAgIDx0ZXh0IHg9IjUwIiB5PSI5OCIgZm9udC1zaXplPSI4IiBmb250LWZhbWlseT0iJ0ltcGFjdCcsIEFyaWFsLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5GTE9SRVNUQTwvdGV4dD4KICAgICAgPHRleHQgeD0iNTAiIHk9IjExMiIgZm9udC1zaXplPSI2LjUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMxNjY1MzQiPk9GSUNJQUw8L3RleHQ+CiAgICA8L3N2Zz4=",
-    "Divertida Mente": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTMwIiB2aWV3Qm94PSIwIDAgMTAwIDEzMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ184Njc2NTgwNTUxNTEyMzEyMjMzIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciLz4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFkNGVkOCIvPgogICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgIDwvZGVmcz4KICAgICAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNnXzg2NzY1ODA1NTE1MTIzMTIyMzMpIiByeD0iMTAiLz4KICAgICAgPGNpcmNsZSBjeD0iNTAiIGN5PSI0NSIgcj0iMjYiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4yKSIvPgogICAgICA8dGV4dCB4PSI1MCIgeT0iNTUiIGZvbnQtc2l6ZT0iMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfp6A8L3RleHQ+CiAgICAgIDxyZWN0IHg9IjYiIHk9IjgyIiB3aWR0aD0iODgiIGhlaWdodD0iNDAiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIi8+CiAgICAgIDx0ZXh0IHg9IjUwIiB5PSI5OCIgZm9udC1zaXplPSI4IiBmb250LWZhbWlseT0iJ0ltcGFjdCcsIEFyaWFsLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5ESVZFUlRJREEgTUVOVDwvdGV4dD4KICAgICAgPHRleHQgeD0iNTAiIHk9IjExMiIgZm9udC1zaXplPSI2LjUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMwMjg0YzciPk9GSUNJQUw8L3RleHQ+CiAgICA8L3N2Zz4=",
-    "O diabo veste prada": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTMwIiB2aWV3Qm94PSIwIDAgMTAwIDEzMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ182ODcwMDgyNTIyNTIyNjc1NjkiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2RiMjc3NyIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjODMxODQzIi8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgPC9kZWZzPgogICAgICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dfNjg3MDA4MjUyMjUyMjY3NTY5KSIgcng9IjEwIi8+CiAgICAgIDxjaXJjbGUgY3g9IjUwIiBjeT0iNDUiIHI9IjI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICAgICAgPHRleHQgeD0iNTAiIHk9IjU1IiBmb250LXNpemU9IjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn5GgPC90ZXh0PgogICAgICA8cmVjdCB4PSI2IiB5PSI4MiIgd2lkdGg9Ijg4IiBoZWlnaHQ9IjQwIiByeD0iNiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjk1KSIvPgogICAgICA8dGV4dCB4PSI1MCIgeT0iOTgiIGZvbnQtc2l6ZT0iOCIgZm9udC1mYW1pbHk9IidJbXBhY3QnLCBBcmlhbCwgc2Fucy1zZXJpZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzBmMTcyYSI+RElBQk8gUFJBREE8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjUwIiB5PSIxMTIiIGZvbnQtc2l6ZT0iNi41IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZGIyNzc3Ij5PRklDSUFMPC90ZXh0PgogICAgPC9zdmc+",
-    "Piratas do Caribe": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTMwIiB2aWV3Qm94PSIwIDAgMTAwIDEzMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ18zNDA0MTE3OTg2MTg4Nzg3NjEiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzMzNDE1NSIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGYxNzJhIi8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgPC9kZWZzPgogICAgICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dfMzQwNDExNzk4NjE4ODc4NzYxKSIgcng9IjEwIi8+CiAgICAgIDxjaXJjbGUgY3g9IjUwIiBjeT0iNDUiIHI9IjI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICAgICAgPHRleHQgeD0iNTAiIHk9IjU1IiBmb250LXNpemU9IjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn4+04oCN4pig77iPPC90ZXh0PgogICAgICA8cmVjdCB4PSI2IiB5PSI4MiIgd2lkdGg9Ijg4IiBoZWlnaHQ9IjQwIiByeD0iNiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjk1KSIvPgogICAgICA8dGV4dCB4PSI1MCIgeT0iOTgiIGZvbnQtc2l6ZT0iOCIgZm9udC1mYW1pbHk9IidJbXBhY3QnLCBBcmlhbCwgc2Fucy1zZXJpZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzBmMTcyYSI+UElSQVRBUyBDQVJJQkU8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjUwIiB5PSIxMTIiIGZvbnQtc2l6ZT0iNi41IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMzM0MTU1Ij5PRklDSUFMPC90ZXh0PgogICAgPC9zdmc+",
-    "Bob Sponja": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTMwIiB2aWV3Qm94PSIwIDAgMTAwIDEzMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ183NTQyMzUwMDgyODI4MjEyMDE2IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNjYThhMDQiLz4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzcxM2YxMiIvPgogICAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICAgIDwvZGVmcz4KICAgICAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNnXzc1NDIzNTAwODI4MjgyMTIwMTYpIiByeD0iMTAiLz4KICAgICAgPGNpcmNsZSBjeD0iNTAiIGN5PSI0NSIgcj0iMjYiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4yKSIvPgogICAgICA8dGV4dCB4PSI1MCIgeT0iNTUiIGZvbnQtc2l6ZT0iMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfp708L3RleHQ+CiAgICAgIDxyZWN0IHg9IjYiIHk9IjgyIiB3aWR0aD0iODgiIGhlaWdodD0iNDAiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIi8+CiAgICAgIDx0ZXh0IHg9IjUwIiB5PSI5OCIgZm9udC1zaXplPSI4IiBmb250LWZhbWlseT0iJ0ltcGFjdCcsIEFyaWFsLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5CT0IgRVNQT05KQTwvdGV4dD4KICAgICAgPHRleHQgeD0iNTAiIHk9IjExMiIgZm9udC1zaXplPSI2LjUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNjYThhMDQiPk9GSUNJQUw8L3RleHQ+CiAgICA8L3N2Zz4=",
-    "Os Incríveis": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTMwIiB2aWV3Qm94PSIwIDAgMTAwIDEzMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ185Nzg3ODEwNzgzMDQzMDY5MzUiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2UxMWQ0OCIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjOWEzNDEyIi8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgPC9kZWZzPgogICAgICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dfOTc4NzgxMDc4MzA0MzA2OTM1KSIgcng9IjEwIi8+CiAgICAgIDxjaXJjbGUgY3g9IjUwIiBjeT0iNDUiIHI9IjI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICAgICAgPHRleHQgeD0iNTAiIHk9IjU1IiBmb250LXNpemU9IjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn6a4PC90ZXh0PgogICAgICA8cmVjdCB4PSI2IiB5PSI4MiIgd2lkdGg9Ijg4IiBoZWlnaHQ9IjQwIiByeD0iNiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjk1KSIvPgogICAgICA8dGV4dCB4PSI1MCIgeT0iOTgiIGZvbnQtc2l6ZT0iOCIgZm9udC1mYW1pbHk9IidJbXBhY3QnLCBBcmlhbCwgc2Fucy1zZXJpZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzBmMTcyYSI+T1MgSU5DUsONVkVJUzwvdGV4dD4KICAgICAgPHRleHQgeD0iNTAiIHk9IjExMiIgZm9udC1zaXplPSI2LjUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNlMTFkNDgiPk9GSUNJQUw8L3RleHQ+CiAgICA8L3N2Zz4="
+    "Lego o Filme": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdfNTkxMzQwMTIwODg0NjE5NjgzMiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmY0NzU3Ii8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmE1MDIiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICA8L2RlZnM+CiAgICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfNTkxMzQwMTIwODg0NjE5NjgzMikiIHJ4PSIxMCIvPgogICAgICA8cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTE0IiBoZWlnaHQ9IjE1NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMywyIiBvcGFjaXR5PSIwLjUiIHJ4PSI4Ii8+CiAgICAgIDxjaXJjbGUgY3g9IjYwIiBjeT0iNTUiIHI9IjMwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICAgICAgPHRleHQgeD0iNjAiIHk9IjY2IiBmb250LXNpemU9IjMyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn6exPC90ZXh0PgogICAgICA8cmVjdCB4PSI4IiB5PSIxMDIiIHdpZHRoPSIxMDQiIGhlaWdodD0iNDgiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIiAvPgogICAgICA8dGV4dCB4PSI2MCIgeT0iMTIyIiBmb250LXNpemU9IjguNSIgZm9udC1mYW1pbHk9IidJbXBhY3QnLCAnQXJpYWwgQmxhY2snLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5MRUdPIE8gRklMTUU8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjYwIiB5PSIxMzgiIGZvbnQtc2l6ZT0iNyIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmY0NzU3IiBsZXR0ZXItc3BhY2luZz0iMSI+T0ZJQ0lBTDwvdGV4dD4KICAgIDwvc3ZnPg==",
+    "Super choque": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdfNTMzNTI5NTM5MjE3MzQxMDcyNCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWU5MGZmIi8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMGQyZDMiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICA8L2RlZnM+CiAgICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfNTMzNTI5NTM5MjE3MzQxMDcyNCkiIHJ4PSIxMCIvPgogICAgICA8cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTE0IiBoZWlnaHQ9IjE1NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMywyIiBvcGFjaXR5PSIwLjUiIHJ4PSI4Ii8+CiAgICAgIDxjaXJjbGUgY3g9IjYwIiBjeT0iNTUiIHI9IjMwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICAgICAgPHRleHQgeD0iNjAiIHk9IjY2IiBmb250LXNpemU9IjMyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7imqE8L3RleHQ+CiAgICAgIDxyZWN0IHg9IjgiIHk9IjEwMiIgd2lkdGg9IjEwNCIgaGVpZ2h0PSI0OCIgcng9IjYiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC45NSkiIC8+CiAgICAgIDx0ZXh0IHg9IjYwIiB5PSIxMjIiIGZvbnQtc2l6ZT0iOC41IiBmb250LWZhbWlseT0iJ0ltcGFjdCcsICdBcmlhbCBCbGFjaycsIHNhbnMtc2VyaWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMwZjE3MmEiPlNVUEVSIENIT1FVRTwvdGV4dD4KICAgICAgPHRleHQgeD0iNjAiIHk9IjEzOCIgZm9udC1zaXplPSI3IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMxZTkwZmYiIGxldHRlci1zcGFjaW5nPSIxIj5PRklDSUFMPC90ZXh0PgogICAgPC9zdmc+",
+    "A fantástica fábrica de chocolate": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdfMTg3MzUwMTk4MDQ2ODY3MTMwOCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOGI1Y2Y2Ii8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzYjA3NjQiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICA8L2RlZnM+CiAgICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfMTg3MzUwMTk4MDQ2ODY3MTMwOCkiIHJ4PSIxMCIvPgogICAgICA8cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTE0IiBoZWlnaHQ9IjE1NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMywyIiBvcGFjaXR5PSIwLjUiIHJ4PSI4Ii8+CiAgICAgIDxjaXJjbGUgY3g9IjYwIiBjeT0iNTUiIHI9IjMwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICAgICAgPHRleHQgeD0iNjAiIHk9IjY2IiBmb250LXNpemU9IjMyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn42rPC90ZXh0PgogICAgICA8cmVjdCB4PSI4IiB5PSIxMDIiIHdpZHRoPSIxMDQiIGhlaWdodD0iNDgiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIiAvPgogICAgICA8dGV4dCB4PSI2MCIgeT0iMTIyIiBmb250LXNpemU9IjguNSIgZm9udC1mYW1pbHk9IidJbXBhY3QnLCAnQXJpYWwgQmxhY2snLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5DSE9DT0xBVEU8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjYwIiB5PSIxMzgiIGZvbnQtc2l6ZT0iNyIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOGI1Y2Y2IiBsZXR0ZXItc3BhY2luZz0iMSI+T0ZJQ0lBTDwvdGV4dD4KICAgIDwvc3ZnPg==",
+    "Rocky, O Desafio Supremo": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdfNTkzMTY5NTgyNzk3OTM2MjMwOSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZGMyNjI2Ii8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM3ZjFkMWQiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICA8L2RlZnM+CiAgICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfNTkzMTY5NTgyNzk3OTM2MjMwOSkiIHJ4PSIxMCIvPgogICAgICA8cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTE0IiBoZWlnaHQ9IjE1NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMywyIiBvcGFjaXR5PSIwLjUiIHJ4PSI4Ii8+CiAgICAgIDxjaXJjbGUgY3g9IjYwIiBjeT0iNTUiIHI9IjMwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICAgICAgPHRleHQgeD0iNjAiIHk9IjY2IiBmb250LXNpemU9IjMyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn6WKPC90ZXh0PgogICAgICA8cmVjdCB4PSI4IiB5PSIxMDIiIHdpZHRoPSIxMDQiIGhlaWdodD0iNDgiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIiAvPgogICAgICA8dGV4dCB4PSI2MCIgeT0iMTIyIiBmb250LXNpemU9IjguNSIgZm9udC1mYW1pbHk9IidJbXBhY3QnLCAnQXJpYWwgQmxhY2snLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5ST0NLWSBCQUxCT0E8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjYwIiB5PSIxMzgiIGZvbnQtc2l6ZT0iNyIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZGMyNjI2IiBsZXR0ZXItc3BhY2luZz0iMSI+T0ZJQ0lBTDwvdGV4dD4KICAgIDwvc3ZnPg==",
+    "Liga da Justiça": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdfMjM5ODM4ODA5OTA4MzY4ODgzOCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMjU2M2ViIi8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxZTFiNGIiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICA8L2RlZnM+CiAgICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfMjM5ODM4ODA5OTA4MzY4ODgzOCkiIHJ4PSIxMCIvPgogICAgICA8cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTE0IiBoZWlnaHQ9IjE1NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMywyIiBvcGFjaXR5PSIwLjUiIHJ4PSI4Ii8+CiAgICAgIDxjaXJjbGUgY3g9IjYwIiBjeT0iNTUiIHI9IjMwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICAgICAgPHRleHQgeD0iNjAiIHk9IjY2IiBmb250LXNpemU9IjMyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn6aHPC90ZXh0PgogICAgICA8cmVjdCB4PSI4IiB5PSIxMDIiIHdpZHRoPSIxMDQiIGhlaWdodD0iNDgiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIiAvPgogICAgICA8dGV4dCB4PSI2MCIgeT0iMTIyIiBmb250LXNpemU9IjguNSIgZm9udC1mYW1pbHk9IidJbXBhY3QnLCAnQXJpYWwgQmxhY2snLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5MSUdBIEpVU1RJw4dBPC90ZXh0PgogICAgICA8dGV4dCB4PSI2MCIgeT0iMTM4IiBmb250LXNpemU9IjciIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzI1NjNlYiIgbGV0dGVyLXNwYWNpbmc9IjEiPk9GSUNJQUw8L3RleHQ+CiAgICA8L3N2Zz4=",
+    "300": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdfMjA1MTI4MjM2MTA2MjY5NTY1MSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOTkxYjFiIi8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxODE4MWIiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICA8L2RlZnM+CiAgICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfMjA1MTI4MjM2MTA2MjY5NTY1MSkiIHJ4PSIxMCIvPgogICAgICA8cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTE0IiBoZWlnaHQ9IjE1NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMywyIiBvcGFjaXR5PSIwLjUiIHJ4PSI4Ii8+CiAgICAgIDxjaXJjbGUgY3g9IjYwIiBjeT0iNTUiIHI9IjMwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICAgICAgPHRleHQgeD0iNjAiIHk9IjY2IiBmb250LXNpemU9IjMyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn5uh77iPPC90ZXh0PgogICAgICA8cmVjdCB4PSI4IiB5PSIxMDIiIHdpZHRoPSIxMDQiIGhlaWdodD0iNDgiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIiAvPgogICAgICA8dGV4dCB4PSI2MCIgeT0iMTIyIiBmb250LXNpemU9IjguNSIgZm9udC1mYW1pbHk9IidJbXBhY3QnLCAnQXJpYWwgQmxhY2snLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5GSUxNRSAzMDA8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjYwIiB5PSIxMzgiIGZvbnQtc2l6ZT0iNyIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTkxYjFiIiBsZXR0ZXItc3BhY2luZz0iMSI+T0ZJQ0lBTDwvdGV4dD4KICAgIDwvc3ZnPg==",
+    "Procurando Nemo": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdfMjYwNDM2NTg0OTczNTgzOTk5OCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZWE1ODBjIi8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwODkxYjIiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICA8L2RlZnM+CiAgICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfMjYwNDM2NTg0OTczNTgzOTk5OCkiIHJ4PSIxMCIvPgogICAgICA8cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTE0IiBoZWlnaHQ9IjE1NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMywyIiBvcGFjaXR5PSIwLjUiIHJ4PSI4Ii8+CiAgICAgIDxjaXJjbGUgY3g9IjYwIiBjeT0iNTUiIHI9IjMwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICAgICAgPHRleHQgeD0iNjAiIHk9IjY2IiBmb250LXNpemU9IjMyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn5CgPC90ZXh0PgogICAgICA8cmVjdCB4PSI4IiB5PSIxMDIiIHdpZHRoPSIxMDQiIGhlaWdodD0iNDgiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIiAvPgogICAgICA8dGV4dCB4PSI2MCIgeT0iMTIyIiBmb250LXNpemU9IjguNSIgZm9udC1mYW1pbHk9IidJbXBhY3QnLCAnQXJpYWwgQmxhY2snLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5ORU1PPC90ZXh0PgogICAgICA8dGV4dCB4PSI2MCIgeT0iMTM4IiBmb250LXNpemU9IjciIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2VhNTgwYyIgbGV0dGVyLXNwYWNpbmc9IjEiPk9GSUNJQUw8L3RleHQ+CiAgICA8L3N2Zz4=",
+    "Enrolados": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdfMzQyMDI1NjYxNjY5NDE3NzE4NCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOTMzM2VhIi8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM0YzFkOTUiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICA8L2RlZnM+CiAgICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfMzQyMDI1NjYxNjY5NDE3NzE4NCkiIHJ4PSIxMCIvPgogICAgICA8cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTE0IiBoZWlnaHQ9IjE1NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMywyIiBvcGFjaXR5PSIwLjUiIHJ4PSI4Ii8+CiAgICAgIDxjaXJjbGUgY3g9IjYwIiBjeT0iNTUiIHI9IjMwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICAgICAgPHRleHQgeD0iNjAiIHk9IjY2IiBmb250LXNpemU9IjMyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn4+wPC90ZXh0PgogICAgICA8cmVjdCB4PSI4IiB5PSIxMDIiIHdpZHRoPSIxMDQiIGhlaWdodD0iNDgiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIiAvPgogICAgICA8dGV4dCB4PSI2MCIgeT0iMTIyIiBmb250LXNpemU9IjguNSIgZm9udC1mYW1pbHk9IidJbXBhY3QnLCAnQXJpYWwgQmxhY2snLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5FTlJPTEFET1M8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjYwIiB5PSIxMzgiIGZvbnQtc2l6ZT0iNyIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTMzM2VhIiBsZXR0ZXItc3BhY2luZz0iMSI+T0ZJQ0lBTDwvdGV4dD4KICAgIDwvc3ZnPg==",
+    "Pânico na Floresta": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdfMjU0MjIyODE4MTUzNTkwMjg2NCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMTY2NTM0Ii8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwNjRlM2IiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICA8L2RlZnM+CiAgICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfMjU0MjIyODE4MTUzNTkwMjg2NCkiIHJ4PSIxMCIvPgogICAgICA8cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTE0IiBoZWlnaHQ9IjE1NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMywyIiBvcGFjaXR5PSIwLjUiIHJ4PSI4Ii8+CiAgICAgIDxjaXJjbGUgY3g9IjYwIiBjeT0iNTUiIHI9IjMwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICAgICAgPHRleHQgeD0iNjAiIHk9IjY2IiBmb250LXNpemU9IjMyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn4yyPC90ZXh0PgogICAgICA8cmVjdCB4PSI4IiB5PSIxMDIiIHdpZHRoPSIxMDQiIGhlaWdodD0iNDgiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIiAvPgogICAgICA8dGV4dCB4PSI2MCIgeT0iMTIyIiBmb250LXNpemU9IjguNSIgZm9udC1mYW1pbHk9IidJbXBhY3QnLCAnQXJpYWwgQmxhY2snLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5GTE9SRVNUQTwvdGV4dD4KICAgICAgPHRleHQgeD0iNjAiIHk9IjEzOCIgZm9udC1zaXplPSI3IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMxNjY1MzQiIGxldHRlci1zcGFjaW5nPSIxIj5PRklDSUFMPC90ZXh0PgogICAgPC9zdmc+",
+    "Divertida Mente": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdfMjAwOTY2ODc3NzkwMzc4NDQ1MiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDI4NGM3Ii8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxZDRlZDgiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICA8L2RlZnM+CiAgICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfMjAwOTY2ODc3NzkwMzc4NDQ1MikiIHJ4PSIxMCIvPgogICAgICA8cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTE0IiBoZWlnaHQ9IjE1NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMywyIiBvcGFjaXR5PSIwLjUiIHJ4PSI4Ii8+CiAgICAgIDxjaXJjbGUgY3g9IjYwIiBjeT0iNTUiIHI9IjMwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICAgICAgPHRleHQgeD0iNjAiIHk9IjY2IiBmb250LXNpemU9IjMyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn6egPC90ZXh0PgogICAgICA8cmVjdCB4PSI4IiB5PSIxMDIiIHdpZHRoPSIxMDQiIGhlaWdodD0iNDgiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIiAvPgogICAgICA8dGV4dCB4PSI2MCIgeT0iMTIyIiBmb250LXNpemU9IjguNSIgZm9udC1mYW1pbHk9IidJbXBhY3QnLCAnQXJpYWwgQmxhY2snLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5ESVZFUlRJREEgTUVOVEU8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjYwIiB5PSIxMzgiIGZvbnQtc2l6ZT0iNyIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMDI4NGM3IiBsZXR0ZXItc3BhY2luZz0iMSI+T0ZJQ0lBTDwvdGV4dD4KICAgIDwvc3ZnPg==",
+    "O diabo veste prada": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdfMTYwNzY2MjM0MDEwMjQ4Njg2MSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZGIyNzc3Ii8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4MzE4NDMiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICA8L2RlZnM+CiAgICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfMTYwNzY2MjM0MDEwMjQ4Njg2MSkiIHJ4PSIxMCIvPgogICAgICA8cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTE0IiBoZWlnaHQ9IjE1NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMywyIiBvcGFjaXR5PSIwLjUiIHJ4PSI4Ii8+CiAgICAgIDxjaXJjbGUgY3g9IjYwIiBjeT0iNTUiIHI9IjMwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICAgICAgPHRleHQgeD0iNjAiIHk9IjY2IiBmb250LXNpemU9IjMyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn5GgPC90ZXh0PgogICAgICA8cmVjdCB4PSI4IiB5PSIxMDIiIHdpZHRoPSIxMDQiIGhlaWdodD0iNDgiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIiAvPgogICAgICA8dGV4dCB4PSI2MCIgeT0iMTIyIiBmb250LXNpemU9IjguNSIgZm9udC1mYW1pbHk9IidJbXBhY3QnLCAnQXJpYWwgQmxhY2snLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5ESUFCTyBQUkFEQTwvdGV4dD4KICAgICAgPHRleHQgeD0iNjAiIHk9IjEzOCIgZm9udC1zaXplPSI3IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNkYjI3NzciIGxldHRlci1zcGFjaW5nPSIxIj5PRklDSUFMPC90ZXh0PgogICAgPC9zdmc+",
+    "Piratas do Caribe": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdfNjQyODU2NDM5NTI5MDMyMjM3MyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMzM0MTU1Ii8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwZjE3MmEiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICA8L2RlZnM+CiAgICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfNjQyODU2NDM5NTI5MDMyMjM3MykiIHJ4PSIxMCIvPgogICAgICA8cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTE0IiBoZWlnaHQ9IjE1NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMywyIiBvcGFjaXR5PSIwLjUiIHJ4PSI4Ii8+CiAgICAgIDxjaXJjbGUgY3g9IjYwIiBjeT0iNTUiIHI9IjMwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICAgICAgPHRleHQgeD0iNjAiIHk9IjY2IiBmb250LXNpemU9IjMyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn4+04oCN4pig77iPPC90ZXh0PgogICAgICA8cmVjdCB4PSI4IiB5PSIxMDIiIHdpZHRoPSIxMDQiIGhlaWdodD0iNDgiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIiAvPgogICAgICA8dGV4dCB4PSI2MCIgeT0iMTIyIiBmb250LXNpemU9IjguNSIgZm9udC1mYW1pbHk9IidJbXBhY3QnLCAnQXJpYWwgQmxhY2snLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5QSVJBVEFTIENBUklCRTwvdGV4dD4KICAgICAgPHRleHQgeD0iNjAiIHk9IjEzOCIgZm9udC1zaXplPSI3IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMzMzQxNTUiIGxldHRlci1zcGFjaW5nPSIxIj5PRklDSUFMPC90ZXh0PgogICAgPC9zdmc+",
+    "Bob Sponja": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdfNTA1Mjk4Mjg2NjkwNzk4NDgwOCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjY2E4YTA0Ii8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM3MTNmMTIiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICA8L2RlZnM+CiAgICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfNTA1Mjk4Mjg2NjkwNzk4NDgwOCkiIHJ4PSIxMCIvPgogICAgICA8cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTE0IiBoZWlnaHQ9IjE1NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMywyIiBvcGFjaXR5PSIwLjUiIHJ4PSI4Ii8+CiAgICAgIDxjaXJjbGUgY3g9IjYwIiBjeT0iNTUiIHI9IjMwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICAgICAgPHRleHQgeD0iNjAiIHk9IjY2IiBmb250LXNpemU9IjMyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn6e9PC90ZXh0PgogICAgICA8cmVjdCB4PSI4IiB5PSIxMDIiIHdpZHRoPSIxMDQiIGhlaWdodD0iNDgiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIiAvPgogICAgICA8dGV4dCB4PSI2MCIgeT0iMTIyIiBmb250LXNpemU9IjguNSIgZm9udC1mYW1pbHk9IidJbXBhY3QnLCAnQXJpYWwgQmxhY2snLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5CT0IgRVNQT05KQTwvdGV4dD4KICAgICAgPHRleHQgeD0iNjAiIHk9IjEzOCIgZm9udC1zaXplPSI3IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNjYThhMDQiIGxldHRlci1zcGFjaW5nPSIxIj5PRklDSUFMPC90ZXh0PgogICAgPC9zdmc+",
+    "Os Incríveis": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTIwIDE2MCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdfNDkzNzgyODUzNjA1NTY3NjQxOCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZTExZDQ4Ii8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM5YTM0MTIiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICA8L2RlZnM+CiAgICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfNDkzNzgyODUzNjA1NTY3NjQxOCkiIHJ4PSIxMCIvPgogICAgICA8cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTE0IiBoZWlnaHQ9IjE1NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMywyIiBvcGFjaXR5PSIwLjUiIHJ4PSI4Ii8+CiAgICAgIDxjaXJjbGUgY3g9IjYwIiBjeT0iNTUiIHI9IjMwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMikiLz4KICAgICAgPHRleHQgeD0iNjAiIHk9IjY2IiBmb250LXNpemU9IjMyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn6a4PC90ZXh0PgogICAgICA8cmVjdCB4PSI4IiB5PSIxMDIiIHdpZHRoPSIxMDQiIGhlaWdodD0iNDgiIHJ4PSI2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuOTUpIiAvPgogICAgICA8dGV4dCB4PSI2MCIgeT0iMTIyIiBmb250LXNpemU9IjguNSIgZm9udC1mYW1pbHk9IidJbXBhY3QnLCAnQXJpYWwgQmxhY2snLCBzYW5zLXNlcmlmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMGYxNzJhIj5PUyBJTkNSw41WRUlTPC90ZXh0PgogICAgICA8dGV4dCB4PSI2MCIgeT0iMTM4IiBmb250LXNpemU9IjciIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2UxMWQ0OCIgbGV0dGVyLXNwYWNpbmc9IjEiPk9GSUNJQUw8L3RleHQ+CiAgICA8L3N2Zz4="
   };
 
   const dados = [
-    {pos: "1º", nome:"Pisos Laminados e Vinílicos", filme:"Lego o Filme", pts:78},
-    {pos: "2º", nome:"Eletricidade", filme:"Super choque", pts:70},
-    {pos: "3º", nome:"Cerâmica", filme:"Lego o Filme", pts:58},
-    {pos: "4º", nome:"Pintura", filme:"A fantástica fábrica de chocolate", pts:54},
-    {pos: "5º", nome:"Carpintaria e Madeira", filme:"Rocky, O Desafio Supremo", pts:44},
-    {pos: "6º", nome:"Ferragens", filme:"Liga da Justiça", pts:35},
-    {pos: "7º", nome:"Materiais", filme:"300", pts:31},
-    {pos: "8º", nome:"Sanitário", filme:"Procurando Nemo", pts:29},
-    {pos: "9º", nome:"Iluminação", filme:"Enrolados", pts:25},
-    {pos: "10º", nome:"Jardim", filme:"Pânico na Floresta", pts:22},
-    {pos: "11º", nome:"Cozinhas", filme:"Divertida Mente", pts:22},
-    {pos: "12º", nome:"Decoração", filme:"O diabo veste prada", pts:21},
-    {pos: "13º", nome:"Organização", filme:"Piratas do Caribe", pts:20},
-    {pos: "14º", nome:"Encanamento", filme:"Bob Sponja", pts:17},
-    {pos: "15º", nome:"Ferramentas", filme:"Os Incríveis", pts:10}
+    {nome:"Pisos Laminados e Vinílicos", filme:"Lego o Filme", pts:78},
+    {nome:"Eletricidade", filme:"Super choque", pts:70},
+    {nome:"Cerâmica", filme:"Lego o Filme", pts:58},
+    {nome:"Pintura", filme:"A fantástica fábrica de chocolate", pts:54},
+    {nome:"Carpintaria e Madeira", filme:"Rocky, O Desafio Supremo", pts:44},
+    {nome:"Ferragens", filme:"Liga da Justiça", pts:35},
+    {nome:"Materiais", filme:"300", pts:31},
+    {nome:"Sanitário", filme:"Procurando Nemo", pts:29},
+    {nome:"Iluminação", filme:"Enrolados", pts:25},
+    {nome:"Jardim", filme:"Pânico na Floresta", pts:22},
+    {nome:"Cozinhas", filme:"Divertida Mente", pts:22},
+    {nome:"Decoração", filme:"O diabo veste prada", pts:21},
+    {nome:"Organização", filme:"Piratas do Caribe", pts:20},
+    {nome:"Encanamento", filme:"Bob Sponja", pts:17},
+    {nome:"Ferramentas", filme:"Os Incríveis", pts:10}
   ];
 
-  const tbody = document.getElementById('tabela-corpo');
-
-  dados.forEach((s) => {
-    const tr = document.createElement('tr');
-    const poster = iconesFilmes[s.filme] || '';
+  // Renderiza a lista principal dos setores
+  const lista = document.getElementById('lista');
+  dados.forEach((s, i) => {
+    const linha = document.createElement('div');
+    linha.className = 'linha';
+    const posterFilme = iconesFilmes[s.filme] || '';
     
-    tr.innerHTML = `
-      <td>
-        <div class="cell-setor">
-          <span class="pos-tag">${s.pos}</span>
-          <img src="${poster}" class="poster-img" alt="${s.filme}">
+    linha.innerHTML = `
+      <div class="pos">${i+1}º</div>
+      <div class="info">
+        <div class="filme-wrap">
+          <img src="${posterFilme}" class="filme-poster" alt="${s.filme}">
           <div>
-            <div class="setor-nome">${s.nome}</div>
+            <div class="nome">${s.nome}</div>
             <div class="filme-nome">🎬 ${s.filme}</div>
           </div>
         </div>
-      </td>
-      <td class="cell-total">${s.pts} pts</td>
-      
-      <!-- 1ª Semana -->
-      <td class="cell-extra">-</td>
-      <td class="cell-extra">-</td>
-      <td class="cell-extra">-</td>
-      
-      <!-- 2ª Semana -->
-      <td class="cell-extra">-</td>
-      <td class="cell-extra">-</td>
-      <td class="cell-extra">-</td>
-      
-      <!-- 3ª Semana -->
-      <td class="cell-extra">-</td>
-      <td class="cell-extra">-</td>
-      <td class="cell-extra">-</td>
+      </div>
+      <div class="valor">${s.pts} pts</div>
     `;
-    tbody.appendChild(tr);
+    lista.appendChild(linha);
   });
+
+  // Função para criar o grid lateral com as 15 linhas alinhadas para cada semana
+  function gerarLinhasSemana(elementId) {
+    const container = document.getElementById(elementId);
+    dados.forEach(() => {
+      const grupo = document.createElement('div');
+      grupo.className = 'celula-grupo';
+      grupo.innerHTML = `
+        <div class="celula-val">-</div>
+        <div class="celula-val">-</div>
+        <div class="celula-val">-</div>
+      `;
+      container.appendChild(grupo);
+    });
+  }
+
+  gerarLinhasSemana('s1-linhas');
+  gerarLinhasSemana('s2-linhas');
+  gerarLinhasSemana('s3-linhas');
 </script>
 
 </body>

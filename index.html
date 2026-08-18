@@ -319,7 +319,6 @@
 </head>
 <body>
 
-<!-- Mini pizzas caindo em segundo plano -->
 <div class="pizza-flutuante" style="left: 6%; animation-delay: 0s;">🍕</div>
 <div class="pizza-flutuante" style="left: 20%; animation-delay: 2.2s;">🍕</div>
 <div class="pizza-flutuante" style="left: 38%; animation-delay: 1.1s;">🍕</div>
@@ -334,33 +333,33 @@
 </header>
 
 <main>
-  <!-- PÓDIO TOP 3 -->
+  <!-- PÓDIO TOP 3 ATUALIZADO: 1º Pisos (86pts), 2º Pintura (73pts), 3º Eletricidade (70pts) -->
   <div class="podio">
     <!-- 2º LUGAR -->
     <div class="pod p2">
       <div class="badge-pos">🥈</div>
-      <img id="img-podio-2" class="poster-podio" alt="Super Choque">
-      <div class="nome">Eletricidade</div>
-      <div class="filme">Super choque</div>
-      <div class="valor">70 <small>pts</small></div>
+      <img id="img-podio-2" class="poster-podio" alt="Pintura">
+      <div class="nome">Pintura</div>
+      <div class="filme">A fantástica fábrica de chocolate</div>
+      <div class="valor">73 <small>pts</small></div>
     </div>
 
     <!-- 1º LUGAR -->
     <div class="pod p1">
       <div class="badge-pos">🏆</div>
-      <img id="img-podio-1" class="poster-podio" alt="Lego">
+      <img id="img-podio-1" class="poster-podio" alt="Pisos">
       <div class="nome">Pisos Laminados e Vinílicos</div>
       <div class="filme">Lego o Filme</div>
-      <div class="valor">78 <small>pts</small></div>
+      <div class="valor">86 <small>pts</small></div>
     </div>
 
     <!-- 3º LUGAR -->
     <div class="pod p3">
       <div class="badge-pos">🥉</div>
-      <img id="img-podio-3" class="poster-podio" alt="Lego Cerâmica">
-      <div class="nome">Cerâmica</div>
-      <div class="filme">Lego o Filme</div>
-      <div class="valor">58 <small>pts</small></div>
+      <img id="img-podio-3" class="poster-podio" alt="Eletricidade">
+      <div class="nome">Eletricidade</div>
+      <div class="filme">Super choque</div>
+      <div class="valor">70 <small>pts</small></div>
     </div>
   </div>
 
@@ -406,20 +405,17 @@
 
 <script>
   function gerarPosterSVG(emoji, titulo, cor1, cor2) {
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="120" height="160" viewBox="0 0 120 160">
-      <defs>
-        <linearGradient id="bg_${Math.abs(titulo.length)}" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="${cor1}"/>
-          <stop offset="100%" stop-color="${cor2}"/>
-        </linearGradient>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#bg_${Math.abs(titulo.length)})" rx="10"/>
-      <circle cx="60" cy="55" r="30" fill="rgba(255,255,255,0.2)"/>
-      <text x="60" y="66" font-size="32" text-anchor="middle">${emoji}</text>
-      <rect x="8" y="102" width="104" height="48" rx="6" fill="rgba(255,255,255,0.95)" />
-      <text x="60" y="122" font-size="8.5" font-family="'Impact', Arial, sans-serif" text-anchor="middle" fill="#0f172a">${titulo.substring(0, 15).toUpperCase()}</text>
-      <text x="60" y="138" font-size="7" font-family="Arial, sans-serif" font-weight="900" text-anchor="middle" fill="${cor1}" letter-spacing="1">OFICIAL</text>
-    </svg>`;
+    const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="120" height="160" viewBox="0 0 120 160">' +
+      '<defs><linearGradient id="bg_' + titulo.length + '" x1="0%" y1="0%" x2="100%" y2="100%">' +
+      '<stop offset="0%" stop-color="' + cor1 + '"/><stop offset="100%" stop-color="' + cor2 + '"/>' +
+      '</linearGradient></defs>' +
+      '<rect width="100%" height="100%" fill="url(#bg_' + titulo.length + ')" rx="10"/>' +
+      '<circle cx="60" cy="55" r="30" fill="rgba(255,255,255,0.2)"/>' +
+      '<text x="60" y="66" font-size="32" text-anchor="middle">' + emoji + '</text>' +
+      '<rect x="8" y="102" width="104" height="48" rx="6" fill="rgba(255,255,255,0.95)"/>' +
+      '<text x="60" y="122" font-size="8.5" font-family="Impact, Arial, sans-serif" text-anchor="middle" fill="#0f172a">' + titulo.substring(0, 15).toUpperCase() + '</text>' +
+      '<text x="60" y="138" font-size="7" font-family="Arial, sans-serif" font-weight="900" text-anchor="middle" fill="' + cor1 + '" letter-spacing="1">OFICIAL</text>' +
+      '</svg>';
     return 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svg)));
   }
 
@@ -442,25 +438,25 @@
   };
 
   document.getElementById('img-podio-1').src = iconesFilmes["Lego o Filme"];
-  document.getElementById('img-podio-2').src = iconesFilmes["Super choque"];
-  document.getElementById('img-podio-3').src = iconesFilmes["Lego o Filme"];
+  document.getElementById('img-podio-2').src = iconesFilmes["A fantástica fábrica de chocolate"];
+  document.getElementById('img-podio-3').src = iconesFilmes["Super choque"];
 
   const dados = [
-    {nome:"Pisos Laminados e Vinílicos", filme:"Lego o Filme", pts:78},
+    {nome:"Pisos Laminados e Vinílicos", filme:"Lego o Filme", pts:86},
+    {nome:"Pintura", filme:"A fantástica fábrica de chocolate", pts:73},
     {nome:"Eletricidade", filme:"Super choque", pts:70},
-    {nome:"Cerâmica", filme:"Lego o Filme", pts:58},
-    {nome:"Pintura", filme:"A fantástica fábrica de chocolate", pts:54},
-    {nome:"Carpintaria e Madeira", filme:"Monstros S.A.", pts:44},
-    {nome:"Ferragens", filme:"Liga da Justiça", pts:35},
+    {nome:"Cerâmica", filme:"Lego o Filme", pts:65},
+    {nome:"Carpintaria e Madeira", filme:"Monstros S.A.", pts:58},
+    {nome:"Ferragens", filme:"Liga da Justiça", pts:46},
+    {nome:"Sanitário", filme:"Procurando Nemo", pts:32},
+    {nome:"Cozinhas", filme:"Divertida Mente", pts:32},
     {nome:"Materiais", filme:"300", pts:31},
-    {nome:"Sanitário", filme:"Procurando Nemo", pts:29},
+    {nome:"Encanamento", filme:"Bob Sponja", pts:29},
+    {nome:"Decoração", filme:"O diabo veste prada", pts:29},
     {nome:"Iluminação", filme:"Enrolados", pts:25},
     {nome:"Jardim", filme:"Pânico na Floresta", pts:22},
-    {nome:"Cozinhas", filme:"Divertida Mente", pts:22},
-    {nome:"Decoração", filme:"O diabo veste prada", pts:21},
     {nome:"Organização", filme:"Piratas do Caribe", pts:20},
-    {nome:"Encanamento", filme:"Bob Sponja", pts:17},
-    {nome:"Ferramentas", filme:"Os Incríveis", pts:10}
+    {nome:"Ferramentas", filme:"Os Incríveis", pts:14}
   ];
 
   const container = document.getElementById('tabela-linhas');

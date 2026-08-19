@@ -333,15 +333,15 @@
 </header>
 
 <main>
-  <!-- PÓDIO TOP 3 ATUALIZADO: 1º Pisos (86pts), 2º Pintura (73pts), 3º Eletricidade (70pts) -->
+  <!-- PÓDIO TOP 3 ATUALIZADO COM OS DADOS MAIS RECENTES -->
   <div class="podio">
     <!-- 2º LUGAR -->
     <div class="pod p2">
       <div class="badge-pos">🥈</div>
-      <img id="img-podio-2" class="poster-podio" alt="Pintura">
-      <div class="nome">Pintura</div>
-      <div class="filme">A fantástica fábrica de chocolate</div>
-      <div class="valor">73 <small>pts</small></div>
+      <img id="img-podio-2" class="poster-podio" alt="Carpintaria e Madeira">
+      <div class="nome">Carpintaria e Madeira</div>
+      <div class="filme">Monstros S.A.</div>
+      <div class="valor">82 <small>pts</small></div>
     </div>
 
     <!-- 1º LUGAR -->
@@ -350,7 +350,7 @@
       <img id="img-podio-1" class="poster-podio" alt="Pisos">
       <div class="nome">Pisos Laminados e Vinílicos</div>
       <div class="filme">Lego o Filme</div>
-      <div class="valor">86 <small>pts</small></div>
+      <div class="valor">115 <small>pts</small></div>
     </div>
 
     <!-- 3º LUGAR -->
@@ -359,7 +359,7 @@
       <img id="img-podio-3" class="poster-podio" alt="Eletricidade">
       <div class="nome">Eletricidade</div>
       <div class="filme">Super choque</div>
-      <div class="valor">70 <small>pts</small></div>
+      <div class="valor">79 <small>pts</small></div>
     </div>
   </div>
 
@@ -438,25 +438,26 @@
   };
 
   document.getElementById('img-podio-1').src = iconesFilmes["Lego o Filme"];
-  document.getElementById('img-podio-2').src = iconesFilmes["A fantástica fábrica de chocolate"];
+  document.getElementById('img-podio-2').src = iconesFilmes["Monstros S.A."];
   document.getElementById('img-podio-3').src = iconesFilmes["Super choque"];
 
+  // DADOS EXTRAÍDOS DIRETAMENTE DA IMAGEM E ORDENADOS DE FORMA DECRESCENTE
   const dados = [
-    {nome:"Pisos Laminados e Vinílicos", filme:"Lego o Filme", pts:86},
-    {nome:"Pintura", filme:"A fantástica fábrica de chocolate", pts:73},
-    {nome:"Eletricidade", filme:"Super choque", pts:70},
-    {nome:"Cerâmica", filme:"Lego o Filme", pts:65},
-    {nome:"Carpintaria e Madeira", filme:"Monstros S.A.", pts:58},
-    {nome:"Ferragens", filme:"Liga da Justiça", pts:46},
-    {nome:"Sanitário", filme:"Procurando Nemo", pts:32},
-    {nome:"Cozinhas", filme:"Divertida Mente", pts:32},
-    {nome:"Materiais", filme:"300", pts:31},
-    {nome:"Encanamento", filme:"Bob Sponja", pts:29},
+    {nome:"Pisos Laminados e Vinílicos", filme:"Lego o Filme", pts:115},
+    {nome:"Carpintaria e Madeira", filme:"Monstros S.A.", pts:82},
+    {nome:"Eletricidade", filme:"Super choque", pts:79},
+    {nome:"Pintura", filme:"A fantástica fábrica de chocolate", pts:76},
+    {nome:"Cerâmica", filme:"Lego o Filme", pts:69},
+    {nome:"Ferragens", filme:"Liga da Justiça", pts:63},
+    {nome:"Materiais", filme:"300", pts:46},
+    {nome:"Sanitário", filme:"Procurando Nemo", pts:46},
+    {nome:"Cozinhas", filme:"Divertida Mente", pts:45},
+    {nome:"Encanamento", filme:"Bob Sponja", pts:44},
+    {nome:"Organização", filme:"Piratas do Caribe", pts:30},
     {nome:"Decoração", filme:"O diabo veste prada", pts:29},
     {nome:"Iluminação", filme:"Enrolados", pts:25},
-    {nome:"Jardim", filme:"Pânico na Floresta", pts:22},
-    {nome:"Organização", filme:"Piratas do Caribe", pts:20},
-    {nome:"Ferramentas", filme:"Os Incríveis", pts:14}
+    {nome:"Jardim", filme:"Pânico na Floresta", pts:23},
+    {nome:"Ferramentas", filme:"Os Incríveis", pts:20}
   ];
 
   const container = document.getElementById('tabela-linhas');

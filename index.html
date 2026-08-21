@@ -30,7 +30,6 @@
     overflow-x: auto;
   }
 
-  /* MINI PIZZAS FLUTUANTES ANIMADAS AO FUNDO */
   .pizza-flutuante {
     position: fixed;
     font-size: 20px;
@@ -105,7 +104,6 @@
     z-index: 2;
   }
 
-  /* PÓDIO IMPACTANTE */
   .podio {
     display: grid;
     grid-template-columns: 1fr 1.15fr 1fr;
@@ -160,7 +158,6 @@
   .pod .valor { font-size: 28px; font-weight: 900; margin-top: 8px; color: #0f172a; }
   .p1 .valor { color: #047857; }
 
-  /* CABEÇALHOS DA GRADE */
   .secoes-headers {
     display: grid;
     grid-template-columns: minmax(460px, 1fr) 1.5fr;
@@ -227,7 +224,6 @@
     line-height: 1.1;
   }
 
-  /* LINHAS DA TABELA PARALELAS */
   .tabela-alinhada {
     display: flex;
     flex-direction: column;
@@ -305,6 +301,13 @@
     color: #0f172a;
   }
 
+  .celula-val.ativo {
+    background: #ecfdf5;
+    border: 1px solid #10b981;
+    color: #047857;
+    font-size: 14px;
+  }
+
   footer {
     text-align: center;
     margin-top: 40px;
@@ -333,43 +336,37 @@
 </header>
 
 <main>
-  <!-- PÓDIO TOP 3 ATUALIZADO: 1º Pisos (120pts), 2º Carpintaria (101pts), 3º Eletricidade (100pts) -->
   <div class="podio">
-    <!-- 2º LUGAR -->
     <div class="pod p2">
       <div class="badge-pos">🥈</div>
       <img id="img-podio-2" class="poster-podio" alt="Carpintaria e Madeira">
       <div class="nome">Carpintaria e Madeira</div>
       <div class="filme">Monstros S.A.</div>
-      <div class="valor">101 <small>pts</small></div>
+      <div class="valor">119 <small>pts</small></div>
     </div>
 
-    <!-- 1º LUGAR -->
     <div class="pod p1">
       <div class="badge-pos">🏆</div>
       <img id="img-podio-1" class="poster-podio" alt="Pisos">
       <div class="nome">Pisos Laminados e Vinílicos</div>
       <div class="filme">Lego o Filme</div>
-      <div class="valor">120 <small>pts</small></div>
+      <div class="valor">140 <small>pts</small></div>
     </div>
 
-    <!-- 3º LUGAR -->
     <div class="pod p3">
       <div class="badge-pos">🥉</div>
       <img id="img-podio-3" class="poster-podio" alt="Eletricidade">
       <div class="nome">Eletricidade</div>
       <div class="filme">Super choque</div>
-      <div class="valor">100 <small>pts</small></div>
+      <div class="valor">111 <small>pts</small></div>
     </div>
   </div>
 
-  <!-- TITULOS DAS SEÇÕES -->
   <div class="secoes-headers">
     <div class="secao-titulo">📊 Classificação Geral dos Setores</div>
     <div class="secao-titulo">🎯 Acompanhamento de Pontos Extras</div>
   </div>
 
-  <!-- CABEÇALHOS DAS SEMANAS -->
   <div class="secoes-headers" style="margin-bottom: 12px;">
     <div></div>
     <div class="quadro-semanas-header">
@@ -397,7 +394,6 @@
     </div>
   </div>
 
-  <!-- TABELA PARALELA COM ALINHAMENTO LINEAR PERFEITO -->
   <div class="tabela-alinhada" id="tabela-linhas"></div>
 </main>
 
@@ -441,23 +437,22 @@
   document.getElementById('img-podio-2').src = iconesFilmes["Monstros S.A."];
   document.getElementById('img-podio-3').src = iconesFilmes["Super choque"];
 
-  // DADOS ATUALIZADOS E ORDENADOS DE FORMA DECRESCENTE (DO 1º AO 15º PLACE)
   const dados = [
-    {nome:"Pisos Laminados e Vinílicos", filme:"Lego o Filme", pts:120},
-    {nome:"Carpintaria e Madeira", filme:"Monstros S.A.", pts:101},
-    {nome:"Eletricidade", filme:"Super choque", pts:100},
-    {nome:"Cerâmica", filme:"Lego o Filme", pts:88},
-    {nome:"Pintura", filme:"A fantástica fábrica de chocolate", pts:86},
-    {nome:"Ferragens", filme:"Liga da Justiça", pts:68},
-    {nome:"Materiais", filme:"300", pts:62},
-    {nome:"Sanitário", filme:"Procurando Nemo", pts:57},
-    {nome:"Encanamento", filme:"Bob Sponja", pts:52},
-    {nome:"Cozinhas", filme:"Divertida Mente", pts:45},
-    {nome:"Decoração", filme:"O diabo veste prada", pts:38},
-    {nome:"Organização", filme:"Piratas do Caribe", pts:31},
-    {nome:"Iluminação", filme:"Enrolados", pts:28},
-    {nome:"Jardim", filme:"Pânico na Floresta", pts:23},
-    {nome:"Ferramentas", filme:"Os Incríveis", pts:20}
+    {nome:"Pisos Laminados e Vinílicos", filme:"Lego o Filme", pts:140, s1_mdh:"-", s1_car:"-"},
+    {nome:"Carpintaria e Madeira", filme:"Monstros S.A.", pts:119, s1_mdh:"-", s1_car:"-"},
+    {nome:"Eletricidade", filme:"Super choque", pts:111, s1_mdh:"-", s1_car:"-"},
+    {nome:"Cerâmica", filme:"Lego o Filme", pts:110, s1_mdh:"-", s1_car:"-"},
+    {nome:"Pintura", filme:"A fantástica fábrica de chocolate", pts:86, s1_mdh:"-", s1_car:"-"},
+    {nome:"Ferragens", filme:"Liga da Justiça", pts:70, s1_mdh:"-", s1_car:"-"},
+    {nome:"Materiais", filme:"300", pts:69, s1_mdh:"-", s1_car:"-"},
+    {nome:"Encanamento", filme:"Bob Sponja", pts:62, s1_mdh:10, s1_car:"-"},
+    {nome:"Cozinhas", filme:"Divertida Mente", pts:61, s1_mdh:10, s1_car:"-"},
+    {nome:"Sanitário", filme:"Procurando Nemo", pts:57, s1_mdh:"-", s1_car:"-"},
+    {nome:"Iluminação", filme:"Enrolados", pts:52, s1_mdh:10, s1_car:"-"},
+    {nome:"Organização", filme:"Piratas do Caribe", pts:50, s1_mdh:10, s1_car:"-"},
+    {nome:"Decoração", filme:"O diabo veste prada", pts:39, s1_mdh:"-", s1_car:"-"},
+    {nome:"Jardim", filme:"Pânico na Floresta", pts:37, s1_mdh:"-", s1_car:"-"},
+    {nome:"Ferramentas", filme:"Os Incríveis", pts:30, s1_mdh:10, s1_car:"-"}
   ];
 
   const container = document.getElementById('tabela-linhas');
@@ -467,6 +462,9 @@
     linhaParalela.className = 'linha-paralela';
     const posterFilme = iconesFilmes[s.filme] || '';
     
+    const mdhClass = s.s1_mdh !== "-" ? "celula-val ativo" : "celula-val";
+    const carClass = s.s1_car !== "-" ? "celula-val ativo" : "celula-val";
+
     linhaParalela.innerHTML = `
       <div class="linha-setor">
         <div class="pos">${i+1}º</div>
@@ -484,8 +482,8 @@
 
       <div class="linha-semanas">
         <div class="semana-box-card">
-          <div class="celula-val">-</div>
-          <div class="celula-val">-</div>
+          <div class="${mdhClass}">${s.s1_mdh}</div>
+          <div class="${carClass}">${s.s1_car}</div>
         </div>
         <div class="semana-box-card">
           <div class="celula-val">-</div>

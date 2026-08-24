@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>A grande estreia da Pizzada — Aniversário Leroy Merlin 2026</title>
+<title>A grande estreia da Pizzada — Aniversário Leroy Merlin 2026 (11º Dia)</title>
 <style>
   :root {
     --bg-light: #f8fafc;
@@ -330,40 +330,44 @@
 <div class="pizza-flutuante" style="left: 89%; animation-delay: 1.8s;">🍕</div>
 
 <header>
-  <span class="selo">🍕 Edição Especial 🎬</span>
+  <span class="selo">🍕 Edição Especial · 11º Dia 🎬</span>
   <h1>A grande estreia da Pizzada <span>Aniversário Leroy Merlin 2026</span></h1>
   <p class="sub">Placar geral de bilheteria e acompanhamento lateral de pontos extras por semana</p>
 </header>
 
 <main>
+  <!-- PÓDIO TOP 3 ATUALIZADO (11º Dia): 1º Pisos (194pts), 2º Carpintaria (167pts), 3º Cerâmica (163pts) -->
   <div class="podio">
+    <!-- 2º LUGAR -->
     <div class="pod p2">
       <div class="badge-pos">🥈</div>
       <img id="img-podio-2" class="poster-podio" alt="Carpintaria e Madeira">
       <div class="nome">Carpintaria e Madeira</div>
       <div class="filme">Monstros S.A.</div>
-      <div class="valor">119 <small>pts</small></div>
+      <div class="valor">167 <small>pts</small></div>
     </div>
 
+    <!-- 1º LUGAR -->
     <div class="pod p1">
       <div class="badge-pos">🏆</div>
       <img id="img-podio-1" class="poster-podio" alt="Pisos">
       <div class="nome">Pisos Laminados e Vinílicos</div>
       <div class="filme">Lego o Filme</div>
-      <div class="valor">140 <small>pts</small></div>
+      <div class="valor">194 <small>pts</small></div>
     </div>
 
+    <!-- 3º LUGAR -->
     <div class="pod p3">
       <div class="badge-pos">🥉</div>
-      <img id="img-podio-3" class="poster-podio" alt="Eletricidade">
-      <div class="nome">Eletricidade</div>
-      <div class="filme">Super choque</div>
-      <div class="valor">111 <small>pts</small></div>
+      <img id="img-podio-3" class="poster-podio" alt="Cerâmica">
+      <div class="nome">Cerâmica</div>
+      <div class="filme">Lego o Filme</div>
+      <div class="valor">163 <small>pts</small></div>
     </div>
   </div>
 
   <div class="secoes-headers">
-    <div class="secao-titulo">📊 Classificação Geral dos Setores</div>
+    <div class="secao-titulo">📊 Classificação Geral dos Setores (11º Dia)</div>
     <div class="secao-titulo">🎯 Acompanhamento de Pontos Extras</div>
   </div>
 
@@ -435,24 +439,25 @@
 
   document.getElementById('img-podio-1').src = iconesFilmes["Lego o Filme"];
   document.getElementById('img-podio-2').src = iconesFilmes["Monstros S.A."];
-  document.getElementById('img-podio-3').src = iconesFilmes["Super choque"];
+  document.getElementById('img-podio-3').src = iconesFilmes["Lego o Filme"];
 
+  // DADOS ATUALIZADOS PARA O 11º DIA DE COMPETIÇÃO
   const dados = [
-    {nome:"Pisos Laminados e Vinílicos", filme:"Lego o Filme", pts:140, s1_mdh:"-", s1_car:"-"},
-    {nome:"Carpintaria e Madeira", filme:"Monstros S.A.", pts:119, s1_mdh:"-", s1_car:"-"},
-    {nome:"Eletricidade", filme:"Super choque", pts:111, s1_mdh:"-", s1_car:"-"},
-    {nome:"Cerâmica", filme:"Lego o Filme", pts:110, s1_mdh:"-", s1_car:"-"},
-    {nome:"Pintura", filme:"A fantástica fábrica de chocolate", pts:86, s1_mdh:"-", s1_car:"-"},
-    {nome:"Ferragens", filme:"Liga da Justiça", pts:70, s1_mdh:"-", s1_car:"-"},
-    {nome:"Materiais", filme:"300", pts:69, s1_mdh:"-", s1_car:"-"},
-    {nome:"Encanamento", filme:"Bob Sponja", pts:62, s1_mdh:10, s1_car:"-"},
-    {nome:"Cozinhas", filme:"Divertida Mente", pts:61, s1_mdh:10, s1_car:"-"},
-    {nome:"Sanitário", filme:"Procurando Nemo", pts:57, s1_mdh:"-", s1_car:"-"},
-    {nome:"Iluminação", filme:"Enrolados", pts:52, s1_mdh:10, s1_car:"-"},
-    {nome:"Organização", filme:"Piratas do Caribe", pts:50, s1_mdh:10, s1_car:"-"},
-    {nome:"Decoração", filme:"O diabo veste prada", pts:39, s1_mdh:"-", s1_car:"-"},
-    {nome:"Jardim", filme:"Pânico na Floresta", pts:37, s1_mdh:"-", s1_car:"-"},
-    {nome:"Ferramentas", filme:"Os Incríveis", pts:30, s1_mdh:10, s1_car:"-"}
+    {nome:"Pisos Laminados e Vinílicos", filme:"Lego o Filme", pts:194, s1_mdh:"-", s1_car:"-"},
+    {nome:"Carpintaria e Madeira", filme:"Monstros S.A.", pts:167, s1_mdh:"-", s1_car:"-"},
+    {nome:"Cerâmica", filme:"Lego o Filme", pts:163, s1_mdh:"-", s1_car:"-"},
+    {nome:"Eletricidade", filme:"Super choque", pts:149, s1_mdh:"-", s1_car:"-"},
+    {nome:"Pintura", filme:"A fantástica fábrica de chocolate", pts:122, s1_mdh:"-", s1_car:"-"},
+    {nome:"Materiais", filme:"300", pts:108, s1_mdh:"-", s1_car:"-"},
+    {nome:"Encanamento", filme:"Bob Sponja", pts:107, s1_mdh:10, s1_car:"-"},
+    {nome:"Cozinhas", filme:"Divertida Mente", pts:81, s1_mdh:10, s1_car:"-"},
+    {nome:"Ferragens", filme:"Liga da Justiça", pts:80, s1_mdh:"-", s1_car:"-"},
+    {nome:"Sanitário", filme:"Procurando Nemo", pts:79, s1_mdh:"-", s1_car:"-"},
+    {nome:"Iluminação", filme:"Enrolados", pts:78, s1_mdh:10, s1_car:"-"},
+    {nome:"Organização", filme:"Piratas do Caribe", pts:62, s1_mdh:10, s1_car:"-"},
+    {nome:"Decoração", filme:"O diabo veste prada", pts:50, s1_mdh:"-", s1_car:"-"},
+    {nome:"Ferramentas", filme:"Os Incríveis", pts:41, s1_mdh:10, s1_car:"-"},
+    {nome:"Jardim", filme:"Pânico na Floresta", pts:38, s1_mdh:"-", s1_car:"-"}
   ];
 
   const container = document.getElementById('tabela-linhas');

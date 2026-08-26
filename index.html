@@ -336,24 +336,24 @@
 </header>
 
 <main>
-  <!-- PÓDIO TOP 3 ATUALIZADO: 1º Pisos (194pts), 2º Carpintaria (192pts), 3º Cerâmica (184pts) -->
+  <!-- PÓDIO TOP 3 ATUALIZADO: 1º Carpintaria (210pts), 2º Pisos (205pts), 3º Cerâmica (187pts) -->
   <div class="podio">
     <!-- 2º LUGAR -->
     <div class="pod p2">
       <div class="badge-pos">🥈</div>
-      <img id="img-podio-2" class="poster-podio" alt="Carpintaria e Madeira">
-      <div class="nome">Carpintaria e Madeira</div>
-      <div class="filme">Monstros S.A.</div>
-      <div class="valor">192 <small>pts</small></div>
+      <img id="img-podio-2" class="poster-podio" alt="Pisos Laminados e Vinílicos">
+      <div class="nome">Pisos Laminados e Vinílicos</div>
+      <div class="filme">Lego o Filme</div>
+      <div class="valor">205 <small>pts</small></div>
     </div>
 
     <!-- 1º LUGAR -->
     <div class="pod p1">
       <div class="badge-pos">🏆</div>
-      <img id="img-podio-1" class="poster-podio" alt="Pisos">
-      <div class="nome">Pisos Laminados e Vinílicos</div>
-      <div class="filme">Lego o Filme</div>
-      <div class="valor">194 <small>pts</small></div>
+      <img id="img-podio-1" class="poster-podio" alt="Carpintaria e Madeira">
+      <div class="nome">Carpintaria e Madeira</div>
+      <div class="filme">Monstros S.A.</div>
+      <div class="valor">210 <small>pts</small></div>
     </div>
 
     <!-- 3º LUGAR -->
@@ -362,7 +362,7 @@
       <img id="img-podio-3" class="poster-podio" alt="Cerâmica">
       <div class="nome">Cerâmica</div>
       <div class="filme">Lego o Filme</div>
-      <div class="valor">184 <small>pts</small></div>
+      <div class="valor">187 <small>pts</small></div>
     </div>
   </div>
 
@@ -437,26 +437,26 @@
     "Os Incríveis": gerarPosterSVG("🦸", "OS INCRÍVEIS", "#e11d48", "#9a3412")
   };
 
-  document.getElementById('img-podio-1').src = iconesFilmes["Lego o Filme"];
-  document.getElementById('img-podio-2').src = iconesFilmes["Monstros S.A."];
+  document.getElementById('img-podio-1').src = iconesFilmes["Monstros S.A."];
+  document.getElementById('img-podio-2').src = iconesFilmes["Lego o Filme"];
   document.getElementById('img-podio-3').src = iconesFilmes["Lego o Filme"];
 
-  // DADOS ATUALIZADOS COM PONTUAÇÃO DO PERÍODO E PONTOS EXTRAS DA 1ª SEMANA
+  // DADOS ATUALIZADOS COM A NOVA IMAGEM
   const dados = [
-    {nome:"Pisos Laminados e Vinílicos", filme:"Lego o Filme", pts:194, s1_mdh:"-", s1_car:"-"},
-    {nome:"Carpintaria e Madeira", filme:"Monstros S.A.", pts:192, s1_mdh:"-", s1_car:"-"},
-    {nome:"Cerâmica", filme:"Lego o Filme", pts:184, s1_mdh:"-", s1_car:"-"},
-    {nome:"Eletricidade", filme:"Super choque", pts:157, s1_mdh:"-", s1_car:"-"},
-    {nome:"Pintura", filme:"A fantástica fábrica de chocolate", pts:140, s1_mdh:"-", s1_car:"-"},
-    {nome:"Materiais", filme:"300", pts:115, s1_mdh:"-", s1_car:"-"},
-    {nome:"Encanamento", filme:"Bob Sponja", pts:111, s1_mdh:10, s1_car:"-"},
-    {nome:"Cozinhas", filme:"Divertida Mente", pts:82, s1_mdh:10, s1_car:"-"},
+    {nome:"Carpintaria e Madeira", filme:"Monstros S.A.", pts:210, s1_mdh:"-", s1_car:"-"},
+    {nome:"Pisos Laminados e Vinílicos", filme:"Lego o Filme", pts:205, s1_mdh:"-", s1_car:"-"},
+    {nome:"Cerâmica", filme:"Lego o Filme", pts:187, s1_mdh:"-", s1_car:"-"},
+    {nome:"Eletricidade", filme:"Super choque", pts:171, s1_mdh:"-", s1_car:"-"},
+    {nome:"Pintura", filme:"A fantástica fábrica de chocolate", pts:156, s1_mdh:"-", s1_car:"-"},
+    {nome:"Materiais", filme:"300", pts:133, s1_mdh:"-", s1_car:"-"},
+    {nome:"Encanamento", filme:"Bob Sponja", pts:130, s1_mdh:10, s1_car:"-"},
+    {nome:"Ferragens", filme:"Liga da Justiça", pts:94, s1_mdh:"-", s1_car:"-"},
+    {nome:"Cozinhas", filme:"Divertida Mente", pts:91, s1_mdh:10, s1_car:"-"},
+    {nome:"Sanitário", filme:"Procurando Nemo", pts:85, s1_mdh:"-", s1_car:"-"},
+    {nome:"Organização", filme:"Piratas do Caribe", pts:84, s1_mdh:10, s1_car:"-"},
     {nome:"Iluminação", filme:"Enrolados", pts:81, s1_mdh:10, s1_car:"-"},
-    {nome:"Ferragens", filme:"Liga da Justiça", pts:80, s1_mdh:"-", s1_car:"-"},
-    {nome:"Sanitário", filme:"Procurando Nemo", pts:79, s1_mdh:"-", s1_car:"-"},
-    {nome:"Organização", filme:"Piratas do Caribe", pts:78, s1_mdh:10, s1_car:"-"},
+    {nome:"Decoração", filme:"O diabo veste prada", pts:58, s1_mdh:"-", s1_car:"-"},
     {nome:"Ferramentas", filme:"Os Incríveis", pts:56, s1_mdh:10, s1_car:"-"},
-    {nome:"Decoração", filme:"O diabo veste prada", pts:50, s1_mdh:"-", s1_car:"-"},
     {nome:"Jardim", filme:"Pânico na Floresta", pts:46, s1_mdh:"-", s1_car:"-"}
   ];
 

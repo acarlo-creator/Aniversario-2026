@@ -336,7 +336,6 @@
 </header>
 
 <main>
-  <!-- PÓDIO TOP 3 ATUALIZADO: 1º Carpintaria (210pts), 2º Pisos (205pts), 3º Cerâmica (187pts) -->
   <div class="podio">
     <!-- 2º LUGAR -->
     <div class="pod p2">
@@ -344,7 +343,7 @@
       <img id="img-podio-2" class="poster-podio" alt="Pisos Laminados e Vinílicos">
       <div class="nome">Pisos Laminados e Vinílicos</div>
       <div class="filme">Lego o Filme</div>
-      <div class="valor">205 <small>pts</small></div>
+      <div class="valor">222 <small>pts</small></div>
     </div>
 
     <!-- 1º LUGAR -->
@@ -353,7 +352,7 @@
       <img id="img-podio-1" class="poster-podio" alt="Carpintaria e Madeira">
       <div class="nome">Carpintaria e Madeira</div>
       <div class="filme">Monstros S.A.</div>
-      <div class="valor">210 <small>pts</small></div>
+      <div class="valor">225 <small>pts</small></div>
     </div>
 
     <!-- 3º LUGAR -->
@@ -362,7 +361,7 @@
       <img id="img-podio-3" class="poster-podio" alt="Cerâmica">
       <div class="nome">Cerâmica</div>
       <div class="filme">Lego o Filme</div>
-      <div class="valor">187 <small>pts</small></div>
+      <div class="valor">212 <small>pts</small></div>
     </div>
   </div>
 
@@ -441,23 +440,22 @@
   document.getElementById('img-podio-2').src = iconesFilmes["Lego o Filme"];
   document.getElementById('img-podio-3').src = iconesFilmes["Lego o Filme"];
 
-  // DADOS ATUALIZADOS COM A NOVA IMAGEM
   const dados = [
-    {nome:"Carpintaria e Madeira", filme:"Monstros S.A.", pts:210, s1_mdh:"-", s1_car:"-"},
-    {nome:"Pisos Laminados e Vinílicos", filme:"Lego o Filme", pts:205, s1_mdh:"-", s1_car:"-"},
-    {nome:"Cerâmica", filme:"Lego o Filme", pts:187, s1_mdh:"-", s1_car:"-"},
-    {nome:"Eletricidade", filme:"Super choque", pts:171, s1_mdh:"-", s1_car:"-"},
-    {nome:"Pintura", filme:"A fantástica fábrica de chocolate", pts:156, s1_mdh:"-", s1_car:"-"},
-    {nome:"Materiais", filme:"300", pts:133, s1_mdh:"-", s1_car:"-"},
-    {nome:"Encanamento", filme:"Bob Sponja", pts:130, s1_mdh:10, s1_car:"-"},
+    {nome:"Carpintaria e Madeira", filme:"Monstros S.A.", pts:225, s1_mdh:"-", s1_car:"-"},
+    {nome:"Pisos Laminados e Vinílicos", filme:"Lego o Filme", pts:222, s1_mdh:"-", s1_car:"-"},
+    {nome:"Cerâmica", filme:"Lego o Filme", pts:212, s1_mdh:"-", s1_car:"-"},
+    {nome:"Eletricidade", filme:"Super choque", pts:177, s1_mdh:"-", s1_car:"-"},
+    {nome:"Pintura", filme:"A fantástica fábrica de chocolate", pts:159, s1_mdh:"-", s1_car:"-"},
+    {nome:"Encanamento", filme:"Bob Sponja", pts:147, s1_mdh:10, s1_car:"-"},
+    {nome:"Materiais", filme:"300", pts:136, s1_mdh:"-", s1_car:"-"},
+    {nome:"Cozinhas", filme:"Divertida Mente", pts:104, s1_mdh:10, s1_car:"-"},
+    {nome:"Sanitário", filme:"Procurando Nemo", pts:100, s1_mdh:"-", s1_car:"-"},
+    {nome:"Organização", filme:"Piratas do Caribe", pts:98, s1_mdh:10, s1_car:"-"},
     {nome:"Ferragens", filme:"Liga da Justiça", pts:94, s1_mdh:"-", s1_car:"-"},
-    {nome:"Cozinhas", filme:"Divertida Mente", pts:91, s1_mdh:10, s1_car:"-"},
-    {nome:"Sanitário", filme:"Procurando Nemo", pts:85, s1_mdh:"-", s1_car:"-"},
-    {nome:"Organização", filme:"Piratas do Caribe", pts:84, s1_mdh:10, s1_car:"-"},
-    {nome:"Iluminação", filme:"Enrolados", pts:81, s1_mdh:10, s1_car:"-"},
+    {nome:"Iluminação", filme:"Enrolados", pts:83, s1_mdh:10, s1_car:"-"},
+    {nome:"Jardim", filme:"Pânico na Floresta", pts:68, s1_mdh:"-", s1_car:"-"},
     {nome:"Decoração", filme:"O diabo veste prada", pts:58, s1_mdh:"-", s1_car:"-"},
-    {nome:"Ferramentas", filme:"Os Incríveis", pts:56, s1_mdh:10, s1_car:"-"},
-    {nome:"Jardim", filme:"Pânico na Floresta", pts:46, s1_mdh:"-", s1_car:"-"}
+    {nome:"Ferramentas", filme:"Os Incríveis", pts:58, s1_mdh:10, s1_car:"-"}
   ];
 
   const container = document.getElementById('tabela-linhas');

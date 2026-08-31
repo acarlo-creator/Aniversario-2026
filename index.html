@@ -336,24 +336,24 @@
 </header>
 
 <main>
-  <!-- PÓDIO TOP 3 ATUALIZADO: 1º Carpintaria (238pts), 2º Pisos (235pts), 3º Cerâmica (221pts) -->
+  <!-- PÓDIO TOP 3 ATUALIZADO: 1º Pisos (284pts), 2º Carpintaria (253pts), 3º Cerâmica (237pts) -->
   <div class="podio">
     <!-- 2º LUGAR -->
     <div class="pod p2">
       <div class="badge-pos">🥈</div>
-      <img id="img-podio-2" class="poster-podio" alt="Pisos Laminados e Vinílicos">
-      <div class="nome">Pisos Laminados e Vinílicos</div>
-      <div class="filme">Lego o Filme</div>
-      <div class="valor">235 <small>pts</small></div>
+      <img id="img-podio-2" class="poster-podio" alt="Carpintaria e Madeira">
+      <div class="nome">Carpintaria e Madeira</div>
+      <div class="filme">Monstros S.A.</div>
+      <div class="valor">253 <small>pts</small></div>
     </div>
 
     <!-- 1º LUGAR -->
     <div class="pod p1">
       <div class="badge-pos">🏆</div>
-      <img id="img-podio-1" class="poster-podio" alt="Carpintaria e Madeira">
-      <div class="nome">Carpintaria e Madeira</div>
-      <div class="filme">Monstros S.A.</div>
-      <div class="valor">238 <small>pts</small></div>
+      <img id="img-podio-1" class="poster-podio" alt="Pisos">
+      <div class="nome">Pisos Laminados e Vinílicos</div>
+      <div class="filme">Lego o Filme</div>
+      <div class="valor">284 <small>pts</small></div>
     </div>
 
     <!-- 3º LUGAR -->
@@ -362,7 +362,7 @@
       <img id="img-podio-3" class="poster-podio" alt="Cerâmica">
       <div class="nome">Cerâmica</div>
       <div class="filme">Lego o Filme</div>
-      <div class="valor">221 <small>pts</small></div>
+      <div class="valor">237 <small>pts</small></div>
     </div>
   </div>
 
@@ -437,27 +437,27 @@
     "Os Incríveis": gerarPosterSVG("🦸", "OS INCRÍVEIS", "#e11d48", "#9a3412")
   };
 
-  document.getElementById('img-podio-1').src = iconesFilmes["Monstros S.A."];
-  document.getElementById('img-podio-2').src = iconesFilmes["Lego o Filme"];
+  document.getElementById('img-podio-1').src = iconesFilmes["Lego o Filme"];
+  document.getElementById('img-podio-2').src = iconesFilmes["Monstros S.A."];
   document.getElementById('img-podio-3').src = iconesFilmes["Lego o Filme"];
 
-  // DADOS ATUALIZADOS COM PONTUAÇÃO DO PERÍODO E PONTOS EXTRAS DA 1ª E 2ª SEMANA
+  // DADOS ATUALIZADOS COM A NOVA IMAGEM
   const dados = [
-    {nome:"Carpintaria e Madeira", filme:"Monstros S.A.", pts:238, s1_mdh:"-", s1_car:"-", s2_mdh:10, s2_car:"-"},
-    {nome:"Pisos Laminados e Vinílicos", filme:"Lego o Filme", pts:235, s1_mdh:"-", s1_car:"-", s2_mdh:"-", s2_car:"-"},
-    {nome:"Cerâmica", filme:"Lego o Filme", pts:221, s1_mdh:"-", s1_car:"-", s2_mdh:"-", s2_car:"-"},
-    {nome:"Eletricidade", filme:"Super choque", pts:197, s1_mdh:"-", s1_car:"-", s2_mdh:"-", s2_car:"-"},
-    {nome:"Pintura", filme:"A fantástica fábrica de chocolate", pts:170, s1_mdh:"-", s1_car:"-", s2_mdh:"-", s2_car:"-"},
-    {nome:"Encanamento", filme:"Bob Sponja", pts:157, s1_mdh:10, s1_car:"-", s2_mdh:10, s2_car:"-"},
-    {nome:"Materiais", filme:"300", pts:150, s1_mdh:"-", s1_car:"-", s2_mdh:"-", s2_car:"-"},
-    {nome:"Cozinhas", filme:"Divertida Mente", pts:121, s1_mdh:10, s1_car:"-", s2_mdh:10, s2_car:"-"},
-    {nome:"Ferragens", filme:"Liga da Justiça", pts:111, s1_mdh:"-", s1_car:"-", s2_mdh:10, s2_car:"-"},
-    {nome:"Organização", filme:"Piratas do Caribe", pts:108, s1_mdh:10, s1_car:"-", s2_mdh:10, s2_car:"-"},
-    {nome:"Sanitário", filme:"Procurando Nemo", pts:100, s1_mdh:"-", s1_car:"-", s2_mdh:"-", s2_car:"-"},
-    {nome:"Iluminação", filme:"Enrolados", pts:100, s1_mdh:10, s1_car:"-", s2_mdh:"-", s2_car:"-"},
-    {nome:"Jardim", filme:"Pânico na Floresta", pts:68, s1_mdh:"-", s1_car:"-", s2_mdh:"-", s2_car:"-"},
-    {nome:"Decoração", filme:"O diabo veste prada", pts:59, s1_mdh:"-", s1_car:"-", s2_mdh:"-", s2_car:"-"},
-    {nome:"Ferramentas", filme:"Os Incríveis", pts:58, s1_mdh:10, s1_car:"-", s2_mdh:"-", s2_car:"-"}
+    {nome:"Pisos Laminados e Vinílicos", filme:"Lego o Filme", pts:284, s1_mdh:"-", s1_car:"-", s2_mdh:"-", s2_car:"-"},
+    {nome:"Carpintaria e Madeira", filme:"Monstros S.A.", pts:253, s1_mdh:"-", s1_car:"-", s2_mdh:10, s2_car:"-"},
+    {nome:"Cerâmica", filme:"Lego o Filme", pts:237, s1_mdh:"-", s1_car:"-", s2_mdh:"-", s2_car:"-"},
+    {nome:"Eletricidade", filme:"Super choque", pts:222, s1_mdh:"-", s1_car:"-", s2_mdh:"-", s2_car:"-"},
+    {nome:"Pintura", filme:"A fantástica fábrica de chocolate", pts:204, s1_mdh:"-", s1_car:"-", s2_mdh:"-", s2_car:"-"},
+    {nome:"Encanamento", filme:"Bob Sponja", pts:176, s1_mdh:10, s1_car:"-", s2_mdh:10, s2_car:"-"},
+    {nome:"Materiais", filme:"300", pts:168, s1_mdh:"-", s1_car:"-", s2_mdh:"-", s2_car:"-"},
+    {nome:"Organização", filme:"Piratas do Caribe", pts:136, s1_mdh:10, s1_car:"-", s2_mdh:10, s2_car:"-"},
+    {nome:"Cozinhas", filme:"Divertida Mente", pts:133, s1_mdh:10, s1_car:"-", s2_mdh:10, s2_car:"-"},
+    {nome:"Ferragens", filme:"Liga da Justiça", pts:114, s1_mdh:"-", s1_car:"-", s2_mdh:10, s2_car:"-"},
+    {nome:"Sanitário", filme:"Procurando Nemo", pts:112, s1_mdh:"-", s1_car:"-", s2_mdh:"-", s2_car:"-"},
+    {nome:"Iluminação", filme:"Enrolados", pts:108, s1_mdh:10, s1_car:"-", s2_mdh:"-", s2_car:"-"},
+    {nome:"Ferramentas", filme:"Os Incríveis", pts:73, s1_mdh:10, s1_car:"-", s2_mdh:"-", s2_car:"-"},
+    {nome:"Decoração", filme:"O diabo veste prada", pts:69, s1_mdh:"-", s1_car:"-", s2_mdh:"-", s2_car:"-"},
+    {nome:"Jardim", filme:"Pânico na Floresta", pts:68, s1_mdh:"-", s1_car:"-", s2_mdh:"-", s2_car:"-"}
   ];
 
   const container = document.getElementById('tabela-linhas');
@@ -488,17 +488,14 @@
       </div>
 
       <div class="linha-semanas">
-        <!-- 1ª Semana -->
         <div class="semana-box-card">
           <div class="${s1MdhClass}">${s.s1_mdh}</div>
           <div class="${s1CarClass}">${s.s1_car}</div>
         </div>
-        <!-- 2ª Semana com os novos pontos extras lançados -->
         <div class="semana-box-card">
           <div class="${s2MdhClass}">${s.s2_mdh}</div>
           <div class="${s2CarClass}">${s.s2_car}</div>
         </div>
-        <!-- 3ª Semana -->
         <div class="semana-box-card">
           <div class="celula-val">-</div>
           <div class="celula-val">-</div>

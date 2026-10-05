@@ -197,9 +197,8 @@
     filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
   }
 
-  .pod .nome { font-size: 13.5px; font-weight: 800; color: #ffffff; min-height: 36px; display: flex; align-items: center; justify-content: center; }
-  .pod .planeta { font-size: 11px; font-weight: 800; color: var(--ciana-trek); text-transform: uppercase; margin-top: 2px; }
-  .pod .filme { font-size: 10.5px; font-weight: 800; color: #f43f5e; text-transform: uppercase; margin-top: 2px; }
+  .pod .nome { font-size: 14px; font-weight: 800; color: #ffffff; min-height: 38px; display: flex; align-items: center; justify-content: center; }
+  .pod .planeta { font-size: 12px; font-weight: 800; color: var(--ciana-trek); text-transform: uppercase; margin-top: 4px; letter-spacing: 1px; }
   .pod .valor { font-size: 34px; font-weight: 900; margin-top: 10px; color: #ffffff; text-shadow: 0 0 15px rgba(255,255,255,0.3); }
   .p1 .valor { color: var(--ciana-trek); text-shadow: 0 0 20px var(--ciana-trek); }
 
@@ -330,9 +329,8 @@
 
   .linha-setor .info { display: flex; flex-direction: column; }
   .linha-setor .info .nome { font-weight: 800; font-size: 13.5px; color: #ffffff; }
-  .linha-setor .info .tags { display: flex; gap: 8px; align-items: center; margin-top: 2px; }
-  .linha-setor .info .planeta-tag { font-size: 11px; color: var(--ciana-trek); font-weight: 700; }
-  .linha-setor .info .filme-tag { font-size: 11px; color: #f43f5e; font-weight: 700; }
+  .linha-setor .info .tags { display: flex; gap: 8px; align-items: center; margin-top: 3px; }
+  .linha-setor .info .planeta-tag { font-size: 11.5px; color: var(--ciana-trek); font-weight: 800; letter-spacing: 0.5px; }
   .linha-setor .valor { font-weight: 900; font-size: 18px; color: #ffffff; text-align: right; }
 
   .linha-semanas {
@@ -410,7 +408,6 @@
       <div class="badge-pos">🥈</div>
       <div class="nome">Cerâmica</div>
       <div class="planeta">🪐 Terrak</div>
-      <div class="filme">🎬 Lego o Filme</div>
       <div class="valor">55 <small style="font-size:16px;">pts</small></div>
       <div class="plataforma-transporter"></div>
     </div>
@@ -419,7 +416,6 @@
       <div class="badge-pos">🏆</div>
       <div class="nome">Pisos Laminados e Vinílicos</div>
       <div class="planeta">🪐 Laminara</div>
-      <div class="filme">🎬 Lego o Filme</div>
       <div class="valor">65 <small style="font-size:16px;">pts</small></div>
       <div class="plataforma-transporter" style="box-shadow: 0 0 25px var(--ciana-trek), 0 0 50px var(--ciana-trek);"></div>
     </div>
@@ -428,7 +424,6 @@
       <div class="badge-pos">🥉</div>
       <div class="nome">Materiais</div>
       <div class="planeta">🪐 Krypton-01</div>
-      <div class="filme">🎬 300</div>
       <div class="valor">35 <small style="font-size:16px;">pts</small></div>
       <div class="plataforma-transporter"></div>
     </div>
@@ -480,21 +475,21 @@
 
 <script>
   const dados = [
-    {pos: 1, nome: "Pisos Laminados e Vinílicos", filme: "Lego o Filme", planeta: "Laminara", icone: "🧱", pts: 65},
-    {pos: 2, nome: "Cerâmica", filme: "Lego o Filme", planeta: "Terrak", icone: "🧱", pts: 55},
-    {pos: 3, nome: "Materiais", filme: "300", planeta: "Krypton-01", icone: "🛡️", pts: 35},
-    {pos: 4, nome: "Pintura", filme: "A Fantástica Fábrica de Chocolate", planeta: "Chromatia", icone: "🍫", pts: 34},
-    {pos: 5, nome: "Eletricidade", filme: "Super Choque", planeta: "Cryon", icone: "⚡", pts: 32},
-    {pos: 6, nome: "Carpintaria e Madeira", filme: "Monstros S.A.", planeta: "Sylvora", icone: "👾", pts: 31},
-    {pos: 7, nome: "Ferramentas", filme: "Os Incríveis", planeta: "Mekanos", icone: "🦸", pts: 28},
-    {pos: 8, nome: "Jardim", filme: "Pânico na Floresta", planeta: "Verdania", icone: "🌲", pts: 27},
-    {pos: 9, nome: "Ferragens", filme: "Liga da Justiça", planeta: "Ferrox", icone: "🦇", pts: 24},
-    {pos: 10, nome: "Encanamento", filme: "Bob Esponja", planeta: "Hydron", icone: "🧽", pts: 20},
-    {pos: 11, nome: "Cozinhas", filme: "Divertida Mente", planeta: "Gourmetia", icone: "🧠", pts: 18},
-    {pos: 12, "nome": "Iluminação", filme: "Enrolados", planeta: "Lumina", icone: "🏰", pts: 15},
-    {pos: 13, "nome": "Sanitário", filme: "Procurando Nemo", planeta: "Aquarion", icone: "🐠", pts: 10},
-    {pos: 14, "nome": "Organização", filme: "Piratas do Caribe", planeta: "Ordonis", icone: "🏴‍☠️", pts: 10},
-    {pos: 15, "nome": "Decoração", filme: "O Diabo Veste Prada", planeta: "Stylia", icone: "👠", pts: 0}
+    {pos: 1, nome: "Pisos Laminados e Vinílicos", planeta: "Laminara", pts: 65},
+    {pos: 2, nome: "Cerâmica", planeta: "Terrak", pts: 55},
+    {pos: 3, nome: "Materiais", planeta: "Krypton-01", pts: 35},
+    {pos: 4, nome: "Pintura", planeta: "Chromatia", pts: 34},
+    {pos: 5, nome: "Eletricidade", planeta: "Cryon", pts: 32},
+    {pos: 6, nome: "Carpintaria e Madeira", planeta: "Sylvora", pts: 31},
+    {pos: 7, nome: "Ferramentas", planeta: "Mekanos", pts: 28},
+    {pos: 8, nome: "Jardim", planeta: "Verdania", pts: 27},
+    {pos: 9, nome: "Ferragens", planeta: "Ferrox", pts: 24},
+    {pos: 10, nome: "Encanamento", planeta: "Hydron", pts: 20},
+    {pos: 11, nome: "Cozinhas", planeta: "Gourmetia", pts: 18},
+    {pos: 12, nome: "Iluminação", planeta: "Lumina", pts: 15},
+    {pos: 13, nome: "Sanitário", planeta: "Aquarion", pts: 10},
+    {pos: 14, nome: "Organização", planeta: "Ordonis", pts: 10},
+    {pos: 15, nome: "Decoração", planeta: "Stylia", pts: 0}
   ];
 
   const container = document.getElementById('tabela-linhas');
@@ -510,7 +505,6 @@
           <div class="nome">${s.nome}</div>
           <div class="tags">
             <span class="planeta-tag">🪐 ${s.planeta}</span>
-            <span class="planeta-tag" style="color:#f43f5e;">🎬 ${s.filme}</span>
           </div>
         </div>
         <div class="valor">${s.pts} pts</div>

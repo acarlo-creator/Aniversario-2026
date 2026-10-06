@@ -147,10 +147,16 @@ async function load(){
  let st='DADOS LOCAIS';
  if(CSV_URL){try{
   const R=csv(await (await fetch(CSV_URL+(CSV_URL.includes('?')?'&':'?')+'t='+Date.now())).text());
-  let hc=[];
-  for(const row of R){const c=[];row.forEach((v,i)=>{const n=norm(v);if(n.includes('mdh'))c.push(i);else if(n.includes('cart'))c.push(i)});if(c.length>=8){hc=c.slice(0,8);break}}
-  let hit=0;
-  for(const row of R){const p=ALIAS[norm(row[0])];if(!p)continue;const s=D.find(x=>x.p==p),n=num(row[1]);if(n!==undefined)s.pts=n;s.sem=[0,1,2,3].map(w=>hc.length?[num(row[hc[2*w]]),num(row[hc[2*w+1]])]:[]);hit++}
+  /* 1) acha a linha de cabeçalho: primeira linha com 8+ células "Ponto extra MDH / Cartões" (E,F,G,H,J,K,L,M) */
+  let hc=[],hr=-1;
+  R.forEach((row,ri)=>{if(hr>=0)return;const c=[];row.forEach((v,i)=>{const n=norm(v);if(n.length<40&&(n.includes('mdh')||n.includes('cart')))c.push(i)});if(c.length>=8){hc=c.slice(0,8);hr=ri}});
+  /* 2) abaixo do cabeçalho, acha cada categoria (nome em qualquer das 4 primeiras colunas; pontos = célula logo à direita). Só vale a 1ª ocorrência. */
+  const seen=new Set();let hit=0;
+  for(let ri=hr+1;ri<R.length;ri++){const row=R[ri];
+   let j=-1,p;for(let c=0;c<4&&c<row.length;c++){const a=ALIAS[norm(row[c])];if(a){j=c;p=a;break}}
+   if(j<0||seen.has(p))continue;seen.add(p);
+   const s=D.find(x=>x.p==p),n=num(row[j+1]);if(n!==undefined)s.pts=n;
+   s.sem=[0,1,2,3].map(w=>hc.length?[num(row[hc[2*w]]),num(row[hc[2*w+1]])]:[]);hit++}
   if(!hit)throw 0; st='AO VIVO';
  }catch(e){st='OFFLINE'}}
  $('st').textContent=st;

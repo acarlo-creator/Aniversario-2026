@@ -168,7 +168,7 @@ function drawTeam(){const s=D[ti],e=EQUIPES[s.p]||{},m=e.membros||[],max=D[0].pt
 document.addEventListener('keydown',e=>{if(!$('tv').classList.contains('on'))return;if(e.key=='ArrowRight')nav(1);if(e.key=='ArrowLeft')nav(-1);if(e.key=='Escape')closeTeam()});
 /* ===== LIGAÇÃO COM A PLANILHA =====
 Cole abaixo o link CSV gerado em Arquivo > Compartilhar > Publicar na Web (aba "Esquenta Bricolagem", formato CSV). */
-const CSV_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vQCX7i0HjCYU85X8XA3f-OqJiMUcswCArvi1-d1rMXCZHhLHab3goWZrI4HgPsp0vyXrf3t7TECgg9q/pub?gid=1847259264&single=true&output=csv';
+const CSV_URL=['https://docs.google.com/spreadsheets/d/1S5Ywu9Po9CYihebWn4l3iqlNcdTPP3L4O0NNagF-msE/gviz/tq?tqx=out:csv&gid=0','https://docs.google.com/spreadsheets/d/1S5Ywu9Po9CYihebWn4l3iqlNcdTPP3L4O0NNagF-msE/export?format=csv&gid=0'];
 const norm=s=>(s||'').toString().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
 const ALIAS={'materiais':'KRYPTON-01','materiais basicos':'KRYPTON-01','carpintaria e madeira':'SYLVORA','carpintaria e madeiras':'SYLVORA','eletricidade':'CRYON','conforto':'CRYON','ferramentas':'MEKANOS','pisos laminados e vinilicos':'LAMINARA','pisos laminados':'LAMINARA','ceramica':'TERRAK','sanitario':'AQUARYS','sanitarios':'AQUARYS','encanamento':'HYDRON','encanamentos':'HYDRON','jardim':'VERDANIA','ferragens':'FERROX','pintura':'CHROMA','decoracao':'AURELIA','iluminacao':'LUMINA','organizacao':'ORDENA','cozinhas':'GASTRON'};
 const num=v=>{const n=parseFloat(String(v).replace(',','.'));return isNaN(n)?undefined:n};
@@ -176,11 +176,13 @@ function csv(t){const R=[];let r=[],c='',q=0;for(let i=0;i<t.length;i++){const c
 async function load(){
  let st='DADOS LOCAIS';
  if(CSV_URL){try{
-  const R=csv(await (await fetch(CSV_URL+(CSV_URL.includes('?')?'&':'?')+'t='+Date.now())).text());
+  let txt='';for(const u of [].concat(CSV_URL)){try{const r=await fetch(u+(u.includes('?')?'&':'?')+'t='+Date.now());if(r.ok){txt=await r.text();if(txt)break}}catch(e){}}
+  if(!txt)throw 0;const R=csv(txt);
   let hc=[];
   for(const row of R){const c=[];row.forEach((v,i)=>{const n=norm(v);if(n.includes('mdh'))c.push(i);else if(n.includes('cart'))c.push(i)});if(c.length>=8){hc=c.slice(0,8);break}}
   let hit=0;
-  for(const row of R){const p=ALIAS[norm(row[0])];if(!p)continue;const s=D.find(x=>x.p==p),n=num(row[1]);if(n!==undefined)s.pts=n;s.sem=[0,1,2,3].map(w=>hc.length?[num(row[hc[2*w]]),num(row[hc[2*w+1]])]:[]);hit++}
+  const seen={};
+  for(const row of R){let c=-1,p;for(let j=0;j<4;j++){p=ALIAS[norm(row[j])];if(p){c=j;break}}if(c<0||seen[p])continue;seen[p]=1;const s=D.find(x=>x.p==p),n=num(row[c+1]);if(n!==undefined)s.pts=n;s.sem=[0,1,2,3].map(w=>hc.length?[num(row[hc[2*w]]),num(row[hc[2*w+1]])]:[]);hit++}
   if(!hit)throw 0; st='AO VIVO';
  }catch(e){st='OFFLINE'}}
  $('st').textContent=st;

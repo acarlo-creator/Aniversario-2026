@@ -59,6 +59,21 @@ h1 small{display:block;font:600 .3em Orbitron;letter-spacing:6px;color:var(--c);
 .val{font:900 18px Orbitron;text-shadow:0 0 10px var(--k)}.val small{font-size:10px}
 .cw{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:rgba(0,0,0,.35);border:1px solid rgba(0,255,136,.2);border-radius:9px;padding:5px;height:62px}
 .cw div{border:1px dashed rgba(0,255,136,.3);border-radius:6px;display:grid;place-items:center;font:700 13px Rajdhani;color:#b6f56a;background:rgba(0,0,0,.4)}
+.btn{cursor:pointer;background:rgba(0,255,136,.15);border:1px solid var(--g);color:#fff;font:700 11px Orbitron;letter-spacing:2px;padding:7px 20px;border-radius:8px;box-shadow:0 0 14px rgba(0,255,136,.5);transition:.2s}.btn:hover,.btn.on{background:var(--g);color:#01190e}
+.pc,.row{cursor:pointer}
+#tv{position:fixed;inset:0;z-index:20;display:none;background:rgba(1,6,3,.86);backdrop-filter:blur(6px);padding:16px;overflow:auto}#tv.on{display:block}
+.tvbox{max-width:1300px;margin:auto}.tvtop{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:14px}
+.tvmain{display:grid;grid-template-columns:minmax(300px,420px) 1fr;gap:16px;align-items:start}
+.tvl{padding:0 18px 18px;text-align:center;border-color:var(--k);box-shadow:0 0 36px var(--k)}
+.tvim{height:230px;margin:0 -18px;overflow:hidden;border-radius:14px 14px 0 0;-webkit-mask:linear-gradient(#000 70%,transparent);mask:linear-gradient(#000 70%,transparent)}.tvim img{width:100%;height:100%;object-fit:cover;animation:fl 5s ease-in-out infinite}
+.tvr{font:700 12px Orbitron;letter-spacing:3px;color:var(--k)}.tvl h2{font:900 24px Orbitron;margin:6px 0 2px}
+.tvw{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:14px}.tvw div{background:rgba(0,0,0,.4);border:1px dashed rgba(0,255,136,.3);border-radius:8px;padding:6px;font:700 12px Rajdhani;color:#b6f56a}.tvw b{display:block;font:700 9px Orbitron;color:var(--g);margin-bottom:2px}
+.mem{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;padding:14px}
+.mc{display:flex;gap:10px;align-items:center;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.1);border-left:4px solid var(--k);border-radius:10px;padding:10px}
+.av{width:42px;height:42px;border-radius:50%;background:var(--k);color:#01190e;font:900 14px Orbitron;display:grid;place-items:center;flex:none;box-shadow:0 0 10px var(--k)}
+.mc b{font:700 16px Rajdhani;display:block}.mc span{font-size:12px;color:#9fb8ad}
+.tmbs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:16px}.tmb{width:62px;height:42px;border-radius:50%;overflow:hidden;border:2px solid transparent;cursor:pointer;opacity:.55;transition:.2s}.tmb img{width:100%;height:100%;object-fit:cover}.tmb:hover,.tmb.act{opacity:1;border-color:var(--k);box-shadow:0 0 12px var(--k)}
+@media(max-width:900px){.tvmain{grid-template-columns:1fr}}
 footer{text-align:center;margin:26px 0 8px;font:700 10px Orbitron;letter-spacing:3px;color:var(--g)}
 @media(max-width:900px){.main{grid-template-columns:1fr}.radar{position:static}.podio{grid-template-columns:1fr 1.1fr 1fr;gap:8px}.pv{font-size:22px}.pc .im{height:90px}.pc.p1 .im{height:115px}}
 </style></head><body>
@@ -67,7 +82,7 @@ footer{text-align:center;margin:26px 0 8px;font:700 10px Orbitron;letter-spacing
 <header>
  <span class="badge">🛸 PONTE DE COMANDO TÁTICA · BRICOBLACKVERSO</span>
  <h1>Corrida nas Estrelas<small>15 Planetas · 15 Civilizações · Loja Morumbi</small></h1>
- <div class="hud"><div>LÍDER<b id="hl"></b></div><div>PONTOS NA FROTA<b id="ht"></b></div><div>MARGEM P/ 2º<b id="hm"></b></div><div>PLANETAS ATIVOS<b id="ha"></b></div><div>TELEMETRIA<b id="st"></b></div></div>
+ <div class="hud"><div>LÍDER<b id="hl"></b></div><div>PONTOS NA FROTA<b id="ht"></b></div><div>MARGEM P/ 2º<b id="hm"></b></div><div>PLANETAS ATIVOS<b id="ha"></b></div><div>TELEMETRIA<b id="st"></b></div><button class="btn" onclick="openTeam(0)">👥 EQUIPES</button></div>
 </header>
 <div class="podio" id="podio"></div>
 <div class="main">
@@ -80,6 +95,7 @@ footer{text-align:center;margin:26px 0 8px;font:700 10px Orbitron;letter-spacing
    <div id="rows"></div>
   </div></div></section>
 </div>
+<div id="tv"><div class="tvbox"><div class="tvtop"><button class="btn" onclick="nav(-1)">◀ ANTERIOR</button><button class="btn" onclick="nav(1)">PRÓXIMA ▶</button><button class="btn" id="ap" onclick="toggleAuto()">▶ APRESENTAR</button><button class="btn" onclick="closeTeam()">✕ FECHAR</button></div><div id="tvb"></div><div class="tmbs" id="tmbs"></div></div></div>
 <footer>🚀 OPERAÇÃO BRICOBLACKVERSO 2026 · LOJA MORUMBI 🌌</footer>
 </div>
 <script>
@@ -110,11 +126,11 @@ $('hl').textContent=D[0].p;$('ht').textContent=D.reduce((t,s)=>t+s.pts,0);
 $('hm').textContent='+'+(D[0].pts-D[1].pts);$('ha').textContent=D.filter(s=>s.pts>0).length+'/'+D.length;
 /* pódio */
 const med=['🏆','🥈','🥉'];
-$('podio').innerHTML=[1,0,2].map(i=>{const s=D[i];return `<div class="panel pc ${i?'':'p1'}" style="--k:${s.k}"><div class="im"><img src="${img(s)}"></div><div class="medal">${med[i]}</div><div class="pn">${s.n}</div><div class="pp">🪐 ${s.p}</div><div class="pr">${s.r}</div><div class="pv">${s.pts}<small> pts</small></div></div>`}).join('');
+$('podio').innerHTML=[1,0,2].map(i=>{const s=D[i];return `<div class="panel pc ${i?'':'p1'}" onclick="openTeam(${i})" style="--k:${s.k}"><div class="im"><img src="${img(s)}"></div><div class="medal">${med[i]}</div><div class="pn">${s.n}</div><div class="pp">🪐 ${s.p}</div><div class="pr">${s.r}</div><div class="pv">${s.pts}<small> pts</small></div></div>`}).join('');
 /* semanas */
 const W=['1ª Sem (01-07)','2ª Sem (08-14)','3ª Sem (15-21)','4ª Sem (22-31)'];
 $('wkh').innerHTML=W.map(w=>`<div><div class="wh">${w}</div><div class="sub"><i>MDH</i><i>Cartões</i></div></div>`).join('');
-$('rows').innerHTML=D.map((s,i)=>`<div class="row" style="--k:${s.k}"><div class="rl"><div class="pos">${i+1}º</div><div class="th"><img src="${img(s)}"></div><div><div class="nm">${s.n}</div><div class="tg"><b>🪐 ${s.p}</b> · ${s.r}</div><div class="bar"><span data-w="${s.pts/max*100}"></span></div></div><div class="val">${s.pts}<small> pts</small></div></div><div class="wk">${s.sem.map(w=>`<div class="cw"><div>${w[0]??'-'}</div><div>${w[1]??'-'}</div></div>`).join('')}</div></div>`).join('');
+$('rows').innerHTML=D.map((s,i)=>`<div class="row" onclick="openTeam(${i})" style="--k:${s.k}"><div class="rl"><div class="pos">${i+1}º</div><div class="th"><img src="${img(s)}"></div><div><div class="nm">${s.n}</div><div class="tg"><b>🪐 ${s.p}</b> · ${s.r}</div><div class="bar"><span data-w="${s.pts/max*100}"></span></div></div><div class="val">${s.pts}<small> pts</small></div></div><div class="wk">${s.sem.map(w=>`<div class="cw"><div>${w[0]??'-'}</div><div>${w[1]??'-'}</div></div>`).join('')}</div></div>`).join('');
 setTimeout(()=>document.querySelectorAll('.bar span').forEach(e=>e.style.width=e.dataset.w+'%'),200);
 /* radar orbital */
 let h=`<defs>${D.map((s,i)=>`<clipPath id="c${i}"><circle cx="0" cy="0" r="${i?24:34}"/></clipPath>`).join('')}<radialGradient id="sw"><stop offset="0" stop-color="#00ff88" stop-opacity=".0"/><stop offset="1" stop-color="#00ff88" stop-opacity=".25"/></radialGradient></defs>`;
@@ -135,60 +151,39 @@ h+=`${pz}
 <text x="300" y="369" text-anchor="middle" fill="#ffd23a" font-family="Orbitron" font-size="9" font-weight="900" letter-spacing="1.5">PIZZA DA GALÁXIA</text><text x="300" y="381" text-anchor="middle" fill="#fff" font-family="Orbitron" font-size="7" letter-spacing="2">GRANDE PRÊMIO</text>`;
 D.forEach((s,i)=>{const r=75+(1-s.pts/max)*195, a=i*137.5*Math.PI/180, x=300+r*Math.cos(a), y=300+r*Math.sin(a), d=50+i*9;
  h+=`<g class="orb" style="animation-duration:${d}s"><g transform="translate(${x} ${y})"><g class="cnt" style="animation-duration:${d}s"><g clip-path="url(#c${i})"><image href="${img(s)}" x="-60" y="-32" width="120" height="64" preserveAspectRatio="xMidYMid slice"/></g><circle r="${i?24:34}" fill="none" stroke="${s.k}" stroke-width="${i?1.5:2.5}" style="filter:drop-shadow(0 0 6px ${s.k})"/><text y="${(i?24:34)+13}" text-anchor="middle" fill="${s.k}" font-family="Orbitron" font-size="9" font-weight="700">${s.p} · ${s.pts}</text></g></g></g>`});
-$('radar').innerHTML=h;}
+$('radar').innerHTML=h;if($('tv').classList.contains('on'))drawTeam();}
+/* ===== EQUIPES: preencha por planeta (exemplo abaixo) =====
+EQUIPES={'LAMINARA':{lider:'Nome do líder',membros:[{n:'Nome Sobrenome',f:'Função'}]}} */
+const EQUIPES={};
+let ti=0,auto=null;
+const ini=n=>n.split(' ').filter(Boolean).slice(0,2).map(x=>x[0]).join('').toUpperCase();
+function openTeam(i){ti=i;$('tv').classList.add('on');document.body.style.overflow='hidden';drawTeam()}
+function closeTeam(){$('tv').classList.remove('on');document.body.style.overflow='';if(auto)toggleAuto()}
+function nav(d){ti=(ti+d+D.length)%D.length;drawTeam()}
+function toggleAuto(){if(auto){clearInterval(auto);auto=null}else auto=setInterval(()=>nav(1),12000);$('ap').textContent=auto?'⏸ PAUSAR':'▶ APRESENTAR';$('ap').classList.toggle('on',!!auto)}
+function drawTeam(){const s=D[ti],e=EQUIPES[s.p]||{},m=e.membros||[],max=D[0].pts||1;
+ $('tvb').innerHTML=`<div class="tvmain" style="--k:${s.k}"><div class="panel tvl"><div class="tvim"><img src="${img(s)}"></div><div class="tvr">${ti+1}º LUGAR</div><h2>${s.n}</h2><div class="pp" style="color:${s.k}">🪐 ${s.p} · ${s.r}</div><div class="pv" style="color:${s.k}">${s.pts}<small> pts</small></div><div class="bar"><span style="width:${s.pts/max*100}%"></span></div><div class="tvw">${s.sem.map((w,k)=>`<div><b>${k+1}ª SEMANA</b>MDH ${w[0]??'-'} · Cartões ${w[1]??'-'}</div>`).join('')}</div></div>
+ <div class="panel"><div class="ttl">👥 EQUIPE ${s.n.toUpperCase()}${e.lider?' · LÍDER: '+e.lider.toUpperCase():''}</div>${m.length?`<div class="mem">${m.map(x=>{x=typeof x=='string'?{n:x}:x;return `<div class="mc"><div class="av">${ini(x.n)}</div><div><b>${x.n}</b><span>${x.f||''}</span></div></div>`}).join('')}</div>`:'<div class="leg" style="padding:30px">Equipe ainda não cadastrada.</div>'}</div></div>`;
+ $('tmbs').innerHTML=D.map((x,i)=>`<div class="tmb ${i==ti?'act':''}" style="--k:${x.k}" title="${x.n}" onclick="openTeam(${i})"><img src="${img(x)}"></div>`).join('')}
+document.addEventListener('keydown',e=>{if(!$('tv').classList.contains('on'))return;if(e.key=='ArrowRight')nav(1);if(e.key=='ArrowLeft')nav(-1);if(e.key=='Escape')closeTeam()});
 /* ===== LIGAÇÃO COM A PLANILHA =====
 Cole abaixo o link CSV gerado em Arquivo > Compartilhar > Publicar na Web (aba "Esquenta Bricolagem", formato CSV). */
-const SHEET_ID='1S5Ywu9Po9CYihebWn4l3iqlNcdTPP3L4O0NNagF-msE',GID='0',PUB='2PACX-1vQCX7i0HjCYU85X8XA3f-OqJiMUcswCArvi1-d1rMXCZHhLHab3goWZrI4HgPsp0vyXrf3t7TECgg9q';
-/* tenta em ordem até uma funcionar: 1) publicado na web, 2) exportação direta, 3) gviz (precisa de "qualquer pessoa com o link pode ver") */
-const CSV_URLS=[
- `https://docs.google.com/spreadsheets/d/e/${PUB}/pub?gid=${GID}&single=true&output=csv`,
- `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${GID}`,
- `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=${GID}&range=A14:M29&headers=1`
-];
+const CSV_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vQCX7i0HjCYU85X8XA3f-OqJiMUcswCArvi1-d1rMXCZHhLHab3goWZrI4HgPsp0vyXrf3t7TECgg9q/pub?gid=1847259264&single=true&output=csv';
 const norm=s=>(s||'').toString().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
 const ALIAS={'materiais':'KRYPTON-01','materiais basicos':'KRYPTON-01','carpintaria e madeira':'SYLVORA','carpintaria e madeiras':'SYLVORA','eletricidade':'CRYON','conforto':'CRYON','ferramentas':'MEKANOS','pisos laminados e vinilicos':'LAMINARA','pisos laminados':'LAMINARA','ceramica':'TERRAK','sanitario':'AQUARYS','sanitarios':'AQUARYS','encanamento':'HYDRON','encanamentos':'HYDRON','jardim':'VERDANIA','ferragens':'FERROX','pintura':'CHROMA','decoracao':'AURELIA','iluminacao':'LUMINA','organizacao':'ORDENA','cozinhas':'GASTRON'};
-const num=v=>{let t=String(v).trim();if(/^\d{1,3}(\.\d{3})+(,\d+)?$/.test(t))t=t.replace(/\./g,'');const n=parseFloat(t.replace(',','.'));return isNaN(n)?undefined:n};
+const num=v=>{const n=parseFloat(String(v).replace(',','.'));return isNaN(n)?undefined:n};
 function csv(t){const R=[];let r=[],c='',q=0;for(let i=0;i<t.length;i++){const ch=t[i];if(q){if(ch=='"'){if(t[i+1]=='"'){c+='"';i++}else q=0}else c+=ch}else if(ch=='"')q=1;else if(ch==','){r.push(c);c=''}else if(ch=='\n'||ch=='\r'){if(ch=='\r'&&t[i+1]=='\n')i++;r.push(c);R.push(r);r=[];c=''}else c+=ch}r.push(c);R.push(r);return R}
-function parse(R){
- /* cabeçalho "Ponto extra MDH/Cartões"; se não achar, usa as colunas fixas E,F,G,H,J,K,L,M */
- let hc=[],hr=-1;
- R.forEach((row,ri)=>{if(hr>=0)return;const c=[];row.forEach((v,i)=>{const n=norm(v);if(n.length<40&&(n.includes('mdh')||n.includes('cart')))c.push(i)});if(c.length>=8){hc=c.slice(0,8);hr=ri}});
- if(hr<0)hc=[4,5,6,7,9,10,11,12];
- const seen=new Set();let hit=0;
- for(let ri=hr+1;ri<R.length;ri++){const row=R[ri];
-  let j=-1,p;for(let c=0;c<4&&c<row.length;c++){const a=ALIAS[norm(row[c])];if(a){j=c;p=a;break}}
-  if(j<0||seen.has(p))continue;seen.add(p);
-  const s=D.find(x=>x.p==p),n=num(row[j+1]);if(n!==undefined)s.pts=n;
-  s.sem=[0,1,2,3].map(w=>[num(row[hc[2*w]]),num(row[hc[2*w+1]])]);hit++}
- return hit;
-}
-/* leitura via <script> (JSONP do gviz): não sofre bloqueio de CORS; exige "qualquer pessoa com o link" */
-function gvizJSONP(){return new Promise((ok,no)=>{
- const cb='gv'+Date.now(),sc=document.createElement('script'),end=()=>{sc.remove();delete window[cb]};
- const tm=setTimeout(()=>{end();no('tempo esgotado')},12000);
- window[cb]=d=>{clearTimeout(tm);end();
-  if(!d||d.status!=='ok'||!d.table)return no('sem permissão');
-  ok(d.table.rows.map(r=>(r.c||[]).map(c=>c==null?'':String(c.v!=null?c.v:(c.f||'')))))};
- sc.onerror=()=>{clearTimeout(tm);end();no('planilha restrita')};
- sc.src=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?gid=${GID}&range=A14:M29&headers=1&tqx=responseHandler:${cb}&t=${Date.now()}`;
- document.head.appendChild(sc)})}
 async function load(){
- const errs=[];let ok=false;
- const extra=new URLSearchParams(location.search).get('csv');
- const urls=(extra?[extra]:[]).concat(CSV_URLS);
- const names=(extra?['link manual']:[]).concat(['publicado','exportação','gviz']);
- for(let i=0;i<urls.length&&!ok;i++){try{
-  const r=await fetch(urls[i]+(urls[i].includes('?')?'&':'?')+'t='+Date.now());
-  if(!r.ok){errs.push(names[i]+': HTTP '+r.status);continue}
-  const t=await r.text();
-  if(t.trim().startsWith('<')){errs.push(names[i]+': pede login');continue}
-  if(parse(csv(t))>=10)ok=true;else errs.push(names[i]+': sem dados')
- }catch(e){errs.push(names[i]+': bloqueado')}}
- if(!ok){try{if(parse(await gvizJSONP())>=10)ok=true;else errs.push('script: sem dados')}catch(e){errs.push('script: '+e)}}
- $('st').textContent=ok?'AO VIVO':'OFFLINE';
- $('st').title=ok?'':errs.join(' | ');
- let dg=$('dg');if(!dg){dg=document.createElement('div');dg.id='dg';dg.style.cssText='text-align:center;font:600 11px Rajdhani;color:#ff9d2e;margin-top:6px;letter-spacing:1px';$('st').closest('.hud').after(dg)}
- dg.textContent=ok?'':errs.join(' · ');
+ let st='DADOS LOCAIS';
+ if(CSV_URL){try{
+  const R=csv(await (await fetch(CSV_URL+(CSV_URL.includes('?')?'&':'?')+'t='+Date.now())).text());
+  let hc=[];
+  for(const row of R){const c=[];row.forEach((v,i)=>{const n=norm(v);if(n.includes('mdh'))c.push(i);else if(n.includes('cart'))c.push(i)});if(c.length>=8){hc=c.slice(0,8);break}}
+  let hit=0;
+  for(const row of R){const p=ALIAS[norm(row[0])];if(!p)continue;const s=D.find(x=>x.p==p),n=num(row[1]);if(n!==undefined)s.pts=n;s.sem=[0,1,2,3].map(w=>hc.length?[num(row[hc[2*w]]),num(row[hc[2*w+1]])]:[]);hit++}
+  if(!hit)throw 0; st='AO VIVO';
+ }catch(e){st='OFFLINE'}}
+ $('st').textContent=st;
  const k=JSON.stringify(D.map(s=>[s.p,s.pts,s.sem]));if(k!==last){last=k;render()}
 }
 load();setInterval(load,60000);
